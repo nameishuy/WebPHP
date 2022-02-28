@@ -5,11 +5,11 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form">
+            <form class="login100-form validate-form" action="{{url('login')}}" method="POST">
+                @csrf
                 <span class="login100-form-title p-b-43">
                     Login to continue
                 </span>
-
 
                 <div class="wrap-input100 validate-input">
                     <input class="input100" type="text" name="username" required>
@@ -28,7 +28,7 @@
                     <button class="login100-form-btn">
                         Login
                     </button>
-                </div>             
+                </div>
             </form>
         </div>
     </div>

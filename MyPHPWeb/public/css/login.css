@@ -257,6 +257,7 @@ iframe {
 
 .login100-form {
   width: 560px;
+  margin: auto;
   min-height: 100vh;
   display: block;
   background-color: #f7f7f7;
@@ -505,6 +506,7 @@ input.input100 {
 @media (max-width: 992px) {
   .login100-form {
     width: 50%;
+    margin: auto;
     padding-left: 30px;
     padding-right: 30px;
   }
@@ -517,6 +519,7 @@ input.input100 {
 @media (max-width: 768px) {
   .login100-form {
     width: 100%;
+    margin: auto;
   }
 
   .login100-more {
@@ -526,6 +529,7 @@ input.input100 {
 
 @media (max-width: 576px) {
   .login100-form {
+    margin: auto;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 70px;

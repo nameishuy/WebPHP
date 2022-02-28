@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Acc;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +19,32 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/link',function(){
+Route::get('/link', function () {
     return view('link');
 });
 
-Route::get('signin',function(){
-    return view('signin');
+
+Route::post('login', [Acc::class, 'login'])->name('login');
+Route::view('signin', 'signin');
+
+Route::get('/logout', function () {
+    if (session()->has('UserLogin')) {
+        session()->remove('UserLogin');
+    }
+    return view('home');
 });
 
-Route::get('signup',function(){
-    return view('signup');
+Route::post('signup', [Acc::class, 'signup'])->name('signup');
+Route::view('signup', 'signup');
+
+Route::get('/profile', function () {
+    if (session()->has('UserLogin')) {
+        if (isset(session()->get('UserLogin')['id'])) {
+            $id = session()->get('UserLogin')['id'];
+            $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
+
+            return view('profile', ['data' => $data]);
+        }
+    }
 });
+Route::post('profile', [Acc::class, 'profile'])->name('profile');
