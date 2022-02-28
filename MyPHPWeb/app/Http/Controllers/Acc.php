@@ -48,22 +48,28 @@ class Acc extends Controller
 
     function profile(Request $req)
     {
+        if($req->session()->has('UserLogin')){
+            if(isset($req->session()->get('UserLogin')['id'])){
+                $id = $req->session()->get('UserLogin')['id'];
+            }
+        }
         $fullname = $req->input('ten');
         $mail = $req->input('mail');
         $diachi = $req->input('diachi');
         $sdt = $req->input('sdt');
         $date = $req->input('date');
         if (isset($mail) && isset($diachi) && isset($sdt) && isset($date) && isset($fullname)) {
-            $data = Http::post('https://bookingapiiiii.herokuapp.com/khachhang', [
+            $data = Http::put('https://bookingapiiiii.herokuapp.com/khachhang', [
+                "id" => $id,
                 "HoTen" => $fullname,
                 "Email" =>  $mail,
                 "DiachiKH" =>  $diachi,
                 "DienthoaiKH" => $sdt,
                 "Ngaysinh" => $date
             ]);
-            $req->session()->put('UserLogin', $data)['HoTen'];
+            $req->session()->put('UserLogin', $data['HoTen']);
             if (isset($data['id'])) {
-                return  view('profile');
+                return  view('profile',$data);
             }
             return view('profile',$data['Messenger']);
         }

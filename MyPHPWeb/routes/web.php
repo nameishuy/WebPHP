@@ -24,7 +24,7 @@ Route::get('/link', function () {
 });
 
 
-Route::post('login', [Acc::class, 'login'])->name('login');
+Route::post('signin', [Acc::class, 'login'])->name('login');
 Route::view('signin', 'signin');
 
 Route::get('/logout', function () {

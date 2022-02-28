@@ -8,7 +8,7 @@
             <div class="profile-tab-nav border-right">
                 <div class="p-4">
                     <div class="img-circle text-center mb-3">
-                        <img src="https://i.imgur.com/6eIvKOg.jpg" alt="Image" class="shadow">
+                        <img src="{{$data['Anh']}}" alt="Image" class="shadow">
                     </div>
                     <h4 class="text-center">{{$data['HoTen']}}</h4>
                     <input type="file" accept="image/*">
