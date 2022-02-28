@@ -27,41 +27,64 @@
             <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                     <h3 class="mb-4">Account Settings</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Họ Và Tên</label>
-                                <input type="text" class="form-control" value="{{$data['HoTen']}}">
+                    <form action="{{url('profile')}}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Họ Và Tên</label>
+                                    @if(isset($data['HoTen']))
+                                    <input type="text" class="form-control" name="ten" value="{{$data['HoTen']}}">
+                                    @else
+                                    <input type="text" class="form-control" name="ten">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    @if(isset($data['Email']))
+                                    <input type="text" class="form-control" name="mail" value="{{$data['Email']}}">
+                                    @else
+                                    <input type="text" class="form-control" name="mail">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Địa Chỉ</label>
+                                    @if(isset($data['DiachiKH']))
+                                    <input type="text" class="form-control" name="diachi" value="{{$data['DiachiKH']}}">
+                                    @else
+                                    <input type="text" class="form-control" name="diachi">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Số Điện Thoại</label>
+                                    @if(isset($data['DienthoaiKH']))
+                                    <input type="text" class="form-control" name="sdt" value="{{$data['DienthoaiKH']}}">
+                                    @else
+                                    <input type="text" class="form-control" name="sdt">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ngày Sinh</label>
+                                    @if(isset($data['Ngaysinh']))
+                                    <input type="date" class="form-control" name="date" value="{{$data['Ngaysinh']}}">
+                                    @else
+                                    <input type="date" class="form-control" name="date">
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control">
-                            </div>
+                        <div>
+                            <button class="btn btn-primary">Cập Nhật</button>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Địa Chỉ</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Số Điện Thoại</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Ngày Sinh</label>
-                                <input type="date" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" (click)="updateInfo()">Cập Nhật</button>
-                    </div>
+                    </form>
                 </div>
                 <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                     <h3 class="mb-4">Password Settings</h3>
