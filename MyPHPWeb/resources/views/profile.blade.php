@@ -8,9 +8,15 @@
             <div class="profile-tab-nav border-right">
                 <div class="p-4">
                     <div class="img-circle text-center mb-3">
+                        @if(isset($data['HoTen']))
                         <img src="{{$data['Anh']}}" alt="Image" class="shadow">
+                        @else
+                        <img src="#" alt="Image" class="shadow">
+                        @endif
                     </div>
+                    @if(isset($data['HoTen']))
                     <h4 class="text-center">{{$data['HoTen']}}</h4>
+                    @endif
                     <input type="file" accept="image/*">
                 </div>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -83,6 +89,9 @@
                         </div>
                         <div>
                             <button class="btn btn-primary">Cập Nhật</button>
+                            @if(isset($Mess))
+                            <h2>{{$Mess}}</h2>
+                            @endif
                         </div>
                     </form>
                 </div>

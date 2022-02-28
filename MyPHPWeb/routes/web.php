@@ -37,6 +37,8 @@ Route::get('/logout', function () {
 Route::post('signup', [Acc::class, 'signup'])->name('signup');
 Route::view('signup', 'signup');
 
+
+Route::post('profile', [Acc::class, 'profile'])->name('profile');
 Route::get('/profile', function () {
     if (session()->has('UserLogin')) {
         if (isset(session()->get('UserLogin')['id'])) {
@@ -47,4 +49,3 @@ Route::get('/profile', function () {
         }
     }
 });
-Route::post('profile', [Acc::class, 'profile'])->name('profile');

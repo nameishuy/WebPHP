@@ -48,8 +48,8 @@ class Acc extends Controller
 
     function profile(Request $req)
     {
-        if($req->session()->has('UserLogin')){
-            if(isset($req->session()->get('UserLogin')['id'])){
+        if ($req->session()->has('UserLogin')) {
+            if (isset($req->session()->get('UserLogin')['id'])) {
                 $id = $req->session()->get('UserLogin')['id'];
             }
         }
@@ -67,11 +67,13 @@ class Acc extends Controller
                 "DienthoaiKH" => $sdt,
                 "Ngaysinh" => $date
             ]);
-            $req->session()->put('UserLogin', $data['HoTen']);
+            $req->session()->remove('UserLogin');
+            $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
-                return  view('profile',$data);
+                return  view('profile', ['data' => $data]);
             }
-            return view('profile',$data['Messenger']);
-        }
+            $Mess = " Lỗi";
+            return view('profile', $Mess);
+        }        
     }
 }
