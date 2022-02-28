@@ -70,7 +70,7 @@ class Acc extends Controller
             $req->session()->remove('UserLogin');
             $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
-                return  view('profile', ['data' => $data]);
+                return  view('home', ['data' => $data]);
             }
             $Mess = " Lỗi";
             return view('profile', $Mess);
