@@ -54,14 +54,21 @@ class Acc extends Controller
                 $oldpass = $req->input('oldpass');
                 $newpass = $req->input('newpass');
                 $compass = $req->input('compass');
+                if ($newpass !=  $compass) {
+                    return back()->with('mess', 'Mật Khẩu Mới Không Khớp');
+                }
                 if (isset($oldpass) && isset($newpass) && isset($compass)) {
-                    Http::put('https://bookingapiiiii.herokuapp.com/khachhangmk', [
+                    $data = Http::put('https://bookingapiiiii.herokuapp.com/khachhangmk', [
                         "id" => $id,
                         "Matkhaued" => $oldpass,
                         "newMatkhau" =>  $newpass,
                         "ConfirmMatKhau" =>  $compass
                     ]);
-                    return back()->with('mess', 'Cập Nhật Thành Công!');
+                    if (isset($data['id'])) {
+                        return back()->with('mess', 'Cập Nhật Thành Công!');
+                    } else {
+                        return  back()->with('mess', 'Mật Khẩu Hiện Tại Không Đúng!');
+                    }
                 }
                 return  back()->with('mess', 'Cập Nhật Không Thành Công!');
             }

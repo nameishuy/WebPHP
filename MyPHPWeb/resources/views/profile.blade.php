@@ -11,15 +11,15 @@
                     <div class="p-4">
                         <div class="img-circle text-center mb-3">
                             @if(isset($data['HoTen']))
-                            <img src="{{$data['Anh']}}" alt="Image" class="shadow">
+                            <img id="Anh" src="{{$data['Anh']}}" alt="Image" class="shadow">
                             @else
-                            <img src="#" alt="Image" class="shadow">
+                            <img id="Anh" src="#" alt="Image" class="shadow">
                             @endif
                         </div>
                         @if(isset($data['HoTen']))
                         <h4 class="text-center">{{$data['HoTen']}}</h4>
                         @endif
-                        <input type="file" name="image" accept="image/*">
+                        <input type="file" onchange="loadimg(event)" name="image" accept="image/*">
                     </div>
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">

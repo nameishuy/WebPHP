@@ -120,6 +120,12 @@
     <script src="js/login.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        loadimg = function(event) {
+            const anh = document.getElementById('Anh');
+            anh.src = URL.createObjectURL(event.target.files[0]);
+        }          
+    </script>
 </body>
 
 </html>
