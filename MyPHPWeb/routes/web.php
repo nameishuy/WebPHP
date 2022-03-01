@@ -39,7 +39,8 @@ Route::view('signup', 'signup');
 
 
 Route::post('profile', [Acc::class, 'profile'])->name('profile');
-Route::get('/profile', function () {
+Route::view('profile', 'profile');
+Route::get('profile', function () {
     if (session()->has('UserLogin')) {
         if (isset(session()->get('UserLogin')['id'])) {
             $id = session()->get('UserLogin')['id'];
@@ -49,3 +50,6 @@ Route::get('/profile', function () {
         }
     }
 });
+
+Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
+

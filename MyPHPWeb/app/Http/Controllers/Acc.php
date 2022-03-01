@@ -46,34 +46,77 @@ class Acc extends Controller
         }
     }
 
+    function updatepass(Request $req)
+    {
+        if ($req->session()->has('UserLogin')) {
+            if (isset($req->session()->get('UserLogin')['id'])) {
+                $id = $req->session()->get('UserLogin')['id'];
+                $oldpass = $req->input('oldpass');
+                $newpass = $req->input('newpass');
+                $compass = $req->input('compass');
+                if (isset($oldpass) && isset($newpass) && isset($compass)) {
+                    Http::put('https://bookingapiiiii.herokuapp.com/khachhangmk', [
+                        "id" => $id,
+                        "Matkhaued" => $oldpass,
+                        "newMatkhau" =>  $newpass,
+                        "ConfirmMatKhau" =>  $compass
+                    ]);
+                    return back()->with('mess', 'Cập Nhật Thành Công!');
+                }
+                return  back()->with('mess', 'Cập Nhật Không Thành Công!');
+            }
+        }
+    }
     function profile(Request $req)
     {
         if ($req->session()->has('UserLogin')) {
             if (isset($req->session()->get('UserLogin')['id'])) {
                 $id = $req->session()->get('UserLogin')['id'];
+                $fullname = $req->input('ten');
+                $mail = $req->input('mail');
+                $diachi = $req->input('diachi');
+                $sdt = $req->input('sdt');
+                $date = $req->input('date');
+                if ($req->has('image')) {
+                    $image = base64_encode(file_get_contents($req->file('image')->path()));
+                    $image_base64 = 'data:image/jpeg;base64,' . $image;
+                    if (isset($mail) && isset($diachi) && isset($sdt) && isset($date) && isset($fullname) && isset($image_base64)) {
+                        $data = Http::put('https://bookingapiiiii.herokuapp.com/khachhang', [
+                            "id" => $id,
+                            "HoTen" => $fullname,
+                            "Anh" => $image_base64,
+                            "Email" =>  $mail,
+                            "DiachiKH" =>  $diachi,
+                            "DienthoaiKH" => $sdt,
+                            "Ngaysinh" => $date
+                        ]);
+                        $req->session()->remove('UserLogin');
+                        $req->session()->put('UserLogin', $data);
+                        if (isset($data['id'])) {
+                            return  view('profile', ['data' => $data]);
+                        }
+
+                        return back()->with('mess', 'Cập Nhật Không Thành Công!');
+                    }
+                } else {
+                    if (isset($mail) && isset($diachi) && isset($sdt) && isset($date) && isset($fullname)) {
+                        $data = Http::put('https://bookingapiiiii.herokuapp.com/khachhang', [
+                            "id" => $id,
+                            "HoTen" => $fullname,
+                            "Email" =>  $mail,
+                            "DiachiKH" =>  $diachi,
+                            "DienthoaiKH" => $sdt,
+                            "Ngaysinh" => $date
+                        ]);
+                        $req->session()->remove('UserLogin');
+                        $req->session()->put('UserLogin', $data);
+                        if (isset($data['id'])) {
+                            return  view('profile', ['data' => $data]);
+                        }
+                        return back()->with('mess', 'Cập Nhật Không Thành Công!');
+                    }
+                }
             }
         }
-        $fullname = $req->input('ten');
-        $mail = $req->input('mail');
-        $diachi = $req->input('diachi');
-        $sdt = $req->input('sdt');
-        $date = $req->input('date');
-        if (isset($mail) && isset($diachi) && isset($sdt) && isset($date) && isset($fullname)) {
-            $data = Http::put('https://bookingapiiiii.herokuapp.com/khachhang', [
-                "id" => $id,
-                "HoTen" => $fullname,
-                "Email" =>  $mail,
-                "DiachiKH" =>  $diachi,
-                "DienthoaiKH" => $sdt,
-                "Ngaysinh" => $date
-            ]);
-            $req->session()->remove('UserLogin');
-            $req->session()->put('UserLogin', $data);
-            if (isset($data['id'])) {
-                return  view('home', ['data' => $data]);
-            }
-            $Mess = " Lỗi";
-            return view('profile', $Mess);
-        }        
     }
 }
