@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\WebController;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
@@ -104,9 +102,8 @@ class Acc extends Controller
                         $req->session()->remove('UserLogin');
                         $req->session()->put('UserLogin', $data);
                         if (isset($data['id'])) {
-                            return  view('profile', ['data' => $data]);
+                            return  view('profile', ['data' => $data, 'mess', 'Cập Nhật Thành Công!']);
                         }
-
                         return back()->with('mess', 'Cập Nhật Không Thành Công!');
                     }
                 } else {
@@ -122,7 +119,7 @@ class Acc extends Controller
                         $req->session()->remove('UserLogin');
                         $req->session()->put('UserLogin', $data);
                         if (isset($data['id'])) {
-                            return  view('profile', ['data' => $data]);
+                            return  view('profile', ['data' => $data, 'mess', 'Cập Nhật Thành Công!']);
                         }
                         return back()->with('mess', 'Cập Nhật Không Thành Công!');
                     }
