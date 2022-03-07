@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\WebController;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 
 
 class Acc extends Controller
 {
+
     function login(Request $req)
     {
         $tk = $req->input('username');
@@ -19,7 +23,7 @@ class Acc extends Controller
             ]);
             $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
-                return  view('home');
+                return App::call('App\Http\Controllers\WebController@index');
             }
             return view('signin');
         }
@@ -40,7 +44,7 @@ class Acc extends Controller
             ]);
             $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
-                return  view('home');
+                return  App::call('App\Http\Controllers\WebController@index');
             }
             return view('signup');
         }

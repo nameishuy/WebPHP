@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Acc;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Http;
 
 /*
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [WebController::class, 'index'])->name('home');
 
 Route::get('/link', function () {
     return view('link');
