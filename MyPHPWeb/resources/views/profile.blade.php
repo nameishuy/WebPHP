@@ -1,7 +1,11 @@
 @extends('layout')
 
 @section('content')
-<h1>{{Session::get('mess')}}</h1>
+<?php if (isset($mess)) : ?>
+    <h1>{{$mess}}</h1>
+<?php else : ?>
+    <h1>{{Session::get('mess')}}</h1>
+<?php endif; ?>
 <section class="py-5 my-5">
     <div class="container">
         <div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -40,9 +44,9 @@
                             <div class="form-group">
                                 <label>Họ Và Tên</label>
                                 @if(isset($data['HoTen']))
-                                <input type="text" class="form-control" name="ten" value="{{$data['HoTen']}}">
+                                <input type="text" class="form-control" name="ten" required value="{{$data['HoTen']}}">
                                 @else
-                                <input type="text" class="form-control" name="ten">
+                                <input type="text" class="form-control" name="ten" required>
                                 @endif
                             </div>
                         </div>
@@ -50,9 +54,9 @@
                             <div class="form-group">
                                 <label>Email</label>
                                 @if(isset($data['Email']))
-                                <input type="text" class="form-control" name="mail" value="{{$data['Email']}}">
+                                <input type="text" class="form-control" name="mail" value="{{$data['Email']}}" required>
                                 @else
-                                <input type="text" class="form-control" name="mail">
+                                <input type="text" class="form-control" name="mail" required>
                                 @endif
                             </div>
                         </div>
@@ -60,9 +64,9 @@
                             <div class="form-group">
                                 <label>Địa Chỉ</label>
                                 @if(isset($data['DiachiKH']))
-                                <input type="text" class="form-control" name="diachi" value="{{$data['DiachiKH']}}">
+                                <input type="text" class="form-control" name="diachi" value="{{$data['DiachiKH']}}" required>
                                 @else
-                                <input type="text" class="form-control" name="diachi">
+                                <input type="text" class="form-control" name="diachi" required>
                                 @endif
                             </div>
                         </div>
@@ -70,9 +74,9 @@
                             <div class="form-group">
                                 <label>Số Điện Thoại</label>
                                 @if(isset($data['DienthoaiKH']))
-                                <input type="text" class="form-control" name="sdt" value="{{$data['DienthoaiKH']}}">
+                                <input type="text" class="form-control" name="sdt" value="{{$data['DienthoaiKH']}}" required>
                                 @else
-                                <input type="text" class="form-control" name="sdt">
+                                <input type="text" class="form-control" name="sdt" required>
                                 @endif
                             </div>
                         </div>
@@ -80,9 +84,9 @@
                             <div class="form-group">
                                 <label>Ngày Sinh</label>
                                 @if(isset($data['Ngaysinh']))
-                                <input type="date" class="form-control" name="date" value="{{$data['Ngaysinh']}}">
+                                <input type="date" class="form-control" name="date" value="{{$data['Ngaysinh']}}" required>
                                 @else
-                                <input type="date" class="form-control" name="date">
+                                <input type="date" class="form-control" name="date" required>
                                 @endif
                             </div>
                         </div>
@@ -100,7 +104,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Mật Khẩu Hiện Tại</label>
-                                    <input type="password" name="oldpass" class="form-control">
+                                    <input type="password" name="oldpass" class="form-control" required>
                                 </div>
 
                             </div>
@@ -109,13 +113,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Mật Khẩu Mới</label>
-                                    <input type="password" name="newpass" class="form-control">
+                                    <input type="password" name="newpass" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Xác Nhận Mật Khẩu</label>
-                                    <input type="password" name="compass" class="form-control">
+                                    <input type="password" name="compass" class="form-control" required>
                                 </div>
                             </div>
                         </div>

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Acc;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [WebController::class, 'index'])->name('home');
 
 Route::get('/link', function () {
     return view('link');
@@ -39,14 +38,14 @@ Route::get('/logout', function () {
     if (session()->has('UserLogin')) {
         session()->remove('UserLogin');
     }
-    return view('home');
+    return  App::call('App\Http\Controllers\WebController@index');
 });
 
 Route::post('signup', [Acc::class, 'signup'])->name('signup');
 Route::view('signup', 'signup');
 
 
-Route::post('profile', [Acc::class, 'profile'])->name('profile');
+
 Route::view('profile', 'profile');
 Route::get('profile', function () {
     if (session()->has('UserLogin')) {
@@ -58,6 +57,6 @@ Route::get('profile', function () {
         }
     }
 });
-
+Route::post('profile', [Acc::class, 'profile'])->name('profile');
 Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 

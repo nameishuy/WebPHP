@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 
 
 class Acc extends Controller
 {
+
     function login(Request $req)
     {
         $tk = $req->input('username');
@@ -19,7 +21,7 @@ class Acc extends Controller
             ]);
             $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
-                return  view('home');
+                return App::call('App\Http\Controllers\WebController@index');
             }
             return view('signin');
         }
@@ -40,7 +42,7 @@ class Acc extends Controller
             ]);
             $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
-                return  view('home');
+                return  App::call('App\Http\Controllers\WebController@index');
             }
             return view('signup');
         }
@@ -100,9 +102,8 @@ class Acc extends Controller
                         $req->session()->remove('UserLogin');
                         $req->session()->put('UserLogin', $data);
                         if (isset($data['id'])) {
-                            return  view('profile', ['data' => $data]);
+                            return  view('profile', ['data' => $data, 'mess', 'Cập Nhật Thành Công!']);
                         }
-
                         return back()->with('mess', 'Cập Nhật Không Thành Công!');
                     }
                 } else {
@@ -118,7 +119,7 @@ class Acc extends Controller
                         $req->session()->remove('UserLogin');
                         $req->session()->put('UserLogin', $data);
                         if (isset($data['id'])) {
-                            return  view('profile', ['data' => $data]);
+                            return  view('profile', ['data' => $data, 'mess', 'Cập Nhật Thành Công!']);
                         }
                         return back()->with('mess', 'Cập Nhật Không Thành Công!');
                     }
