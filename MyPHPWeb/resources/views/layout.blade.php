@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +9,11 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/login.css">
+
+    <!-- CSS Pages -->
     <link rel="stylesheet" href="/css/util.css">
     <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Boostrap 5 -->

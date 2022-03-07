@@ -26,6 +26,14 @@ Route::get('/link', function () {
 
 Route::post('signin', [Acc::class, 'login'])->name('login');
 Route::view('signin', 'signin');
+Route::get('/signin',function(){
+
+    if(session()->has('UserLogin')){
+        return view('home');
+    }else{
+        return view('signin');
+    }
+});
 
 Route::get('/logout', function () {
     if (session()->has('UserLogin')) {
