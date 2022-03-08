@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/util.css">
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/products.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Boostrap 5 -->
@@ -37,12 +38,16 @@
                         <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sản Phẩm</a>
+                        <a class="nav-link" href="/products">Sản Phẩm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
+            </div>
+            <div class="Cart">
+                <ion-icon name="cart-outline"></ion-icon>
+                <span class="countCart">0</span>
             </div>
             @if (isset(Session::get('UserLogin')['HoTen']))
             <div class="dropdown " id="Account_Info">
