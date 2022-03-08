@@ -61,3 +61,8 @@ Route::post('profile', [Acc::class, 'profile'])->name('profile');
 Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 
 Route::get('/products', [WebController::class, 'product'])->name('product');
+
+Route::view('admin', 'admin_home');
+Route::view('admin_account', 'admin_account');
+Route::view('admin_product', 'admin_product');
+Route::view('admin_banner', 'admin_banner');
