@@ -60,4 +60,4 @@ Route::get('/profile', function () {
 Route::post('profile', [Acc::class, 'profile'])->name('profile');
 Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 
-Route::view('/products', 'products');
+Route::get('/products', [WebController::class, 'product'])->name('product');

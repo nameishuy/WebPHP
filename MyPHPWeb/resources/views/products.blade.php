@@ -5,7 +5,9 @@
     <div class="Product__ListCategory">
         <h6>THỂ LOẠI SẢN PHẨM</h6>
         <ul>
-            <li><a></a></li>
+            @foreach ($chude as $chude)
+            <li><a href="?chude={{$chude['_id']}}">{{$chude["TenChuDe"]}}</a></li>
+            @endforeach
         </ul>
     </div>
     <div class="Product__ListProduct">
@@ -19,37 +21,80 @@
                 </select>
             </div>
         </div>
-        <div class="Product__List"></div>
-        <div class="Product__List">
-            <div class="Book">
-                <div class="Book__Img">
-                    <img src="https://www.davibooks.vn/stores/uploads/u/b4__78188.jpg"
-                        alt="">
-                </div>
-                <div class="Book__Content">
-                    <div class="Book__Content-BookName">
-                        <h3>Đắc Nhân Tâm</h3>
-                        <p class="Book__Content-Author">Nguyễn Văn Phước</p>
-                        <p class="Book__Content-Price">1đ</p>
+        <div class="Product__List" style="float: left;">
+            <?php
+
+            use App\Http\Controllers\WebController;
+
+            $last = 4;
+            $pages = 1;
+            $link = "sachpagination";
+            $IDCHUDE = null;
+            if (isset($_GET["pages"])) {
+                $pages = $_GET["pages"];
+            }
+            if ($_GET["chude"] != "") {
+                $link = "sachpaginationbychude/" .  $_GET["chude"];
+                $IDCHUDE = $_GET["chude"];
+            }
+            //Lấy tổng sản phẩm trong data bằng query select count(id) from name_table với JDBC Connect
+            $total = WebController::countbook($IDCHUDE);
+            $list = WebController::getlist($link, $pages, $last);
+            foreach ($list as $data) {
+
+            ?>
+                <div class="Book">
+                    <div class="Book__Img">
+                        <img src="<?php echo $data["Anh"] ?>" alt="">
+                    </div>
+                    <div class="Book__Content">
+                        <div class="Book__Content-BookName">
+                            <h3><?php echo $data["Tensach"] ?></h3>
+                            <p class="Book__Content-Author"><?php echo $data["TenTG"] ?></p>
+                            <p class="Book__Content-Price"><?php echo $data["Giaban"] ?>đ</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
-            <ul class="pagination" id="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next"> 
-                        <span class="sr-only">Next</span> <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
+        <ul class="pagination" id="pagination">
+            <?php
+            //Button Number pages
+            $loop = 0;
+            $num = 0;
+            if (($total / 4) % 2 == 0) {
+                $num = $total / 4;
+            } else {
+                $num = ($total + 1) / 4;
+            }
+            //Nếu total lẻ thêm 1
+            if ($total % 2 != 0) {
+                $loop = ($total / 4) + 1;
+            } else {
+                //Nếu total chẵn nhỏ hơn fullpage và # fullPage thì thêm 1
+                if ($total < ($num * 4) + 4 && $total != $num * 4) {
+                    $loop = ($total / 4) + 1;
+                } else {
+                    //Nếu bằng fullPage thì không thêm
+                    $loop = ($total / 4);
+                }
+            }
+            //Lap so pages
+            for ($i = 1; $i <= $loop; $i++) {
+            ?>
+                <?php
+                if ($pages == $i) {
+                ?>
+                    <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $IDCHUDE ?>"><?php echo $i ?></a></li>
+                <?php
+                } else {
+                ?>
+                    <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $IDCHUDE ?>"><?php echo $i ?></a></li>
+            <?php
+                }
+            }
+            ?>
+        </ul>
     </div>
 </div>
 @endsection
