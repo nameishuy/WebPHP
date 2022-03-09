@@ -203,6 +203,7 @@
     <!--Custom JavaScript -->
     <script src="css/admin/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <!--chartis chart-->
     <script src="css/admin/assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="css/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
