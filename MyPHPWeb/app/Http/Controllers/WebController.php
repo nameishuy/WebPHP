@@ -19,14 +19,14 @@ class WebController extends Controller
         return view('home', ['book1' => $book1, 'book2' => $book2, 'sachhay' => $sachhay, 'active' => 1]);
     }
 
+
     function product()
     {
         $url = "https://bookingapiiiii.herokuapp.com/";
 
-        $chude = json_decode(Http::get($url . 'chude'), true);
-        $book = json_decode(Http::get($url . 'sach'), true);
+        $chude = json_decode(Http::get($url . 'chude'), true);     
 
-        return view('products', ['chude' => $chude, 'book' => $book]);
+        return view('products', ['chude' => $chude]);
     }
 
     public static function countbook($MaCD)
@@ -38,15 +38,13 @@ class WebController extends Controller
             $linkbook = "https://bookingapiiiii.herokuapp.com/sachbyCD/" . $MaCD;
         }
         $book = json_decode(Http::get($linkbook), true);
-
         return count($book);
     }
 
     public static function getlist($link, $pages, $last)
     {
         $url = "https://bookingapiiiii.herokuapp.com/" . $link . "/" . $pages . "/" . $last;
-        $book = json_decode(Http::get($url), true);
-       
+        $book = json_decode(Http::get($url), true);     
         return $book;
     }
 }
