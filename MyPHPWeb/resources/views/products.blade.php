@@ -44,9 +44,9 @@
             $total = WebController::countbook($IDCHUDE);
             $list = WebController::getlist($link, $pages, $last);
             foreach ($list as $data) {
-                if (isset($list["Messager"])) {
+                if (isset($data["Messager"])) {
             ?>
-                    <h4><?php echo $list["Messager"] ?></h4>
+                    <h4><?php echo $data["Messager"] ?></h4>
                 <?php
                 } else {
                 ?>
