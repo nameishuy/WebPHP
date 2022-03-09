@@ -15,7 +15,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="/admin_home">Home</a>
+                                        <a href="/admin">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Product</li>
                                 </ol>
@@ -29,16 +29,16 @@
     <p class="text">THÊM SẢN PHẨM</p>
     <p class="icon">&#43;</p>
 </a>
-<a href="#" class="ADD-Btn2">
+<a href="#" class="ADD-Btn">
     <p class="text">THÊM LOẠI CHỦ ĐỀ</p>
     <p class="icon">&#43;</p>
 </a>
-<a href="#" class="ADD-Btn2">
+<a href="#" class="ADD-Btn">
     <p class="text">THÊM NHÀ XUẤT BẢN</p>
     <p class="icon">&#43;</p>
 </a>
 
-<table class="table" border="1">
+<table class="table" border="2.5">
     <tr>
         <th>
             Tên Sách
@@ -94,43 +94,18 @@
                {{-- @Html.Action("NCC", "ChucNang", new { id = item.MaNCC })--}}
             </td>
             <td class="tool">
-                Sửa
-                Xóa
+                <a href="#">Sửa</a> /
+                <a href="#">Xóa</a>
             </td>
         </tr>
 
 </table>
 </div>
 
-    <style>
-        .pagination {
-            position: relative;
-            background: #fff;
-            display: flex;
-            padding: 10px 20px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,.2);
-            text-align: center;
-            justify-content: center
+    <style>     
+        .tool{
+            width: 100px;
         }
-            .pagination > li {
-                margin: 0 5px;
-                width: 50px;
-                height: 50px;
-                line-height: 50px;
-                text-align: center;
-            }
-                .pagination > li > a {
-                    color: #777;
-                    font-weight: 600;
-                    border-radius: 50%;
-                    display: block;
-                }
-                .pagination > li:hover a,
-                .pagination > li.active a {
-                    background: #333;
-                    color: #fff
-                }
         .tool>a:hover {
             text-decoration: underline;
         }
@@ -139,8 +114,9 @@
             justify-content: center;
             display: inline;
         }
-        table {
+        .table {
             width: 100%;
+            font-size: 14px;
         }
         img{
             width: 300px;
@@ -151,16 +127,51 @@
             background: #ffff;
             color: black;
             text-transform: uppercase;
+            text-align: center;
+            border: solid 1.5px;
         }
         td {
             text-align: center;
-        }
-        th, td {
-            text-align: center;
+            border: solid 1.5px;
         }
         td:hover {
             background-color: #ff006e;
         }
+        /*Nut Them*/
+        .text {
+            padding-top: 2px;
+            margin: 0 20px;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #1623ae;
+        }
+        .ADD-Btn {
+            margin-top: 30px;
+            margin-left: 10%;
+            width: fit-content;
+            height: 50px;
+            padding: 10px 10px;
+            background: linear-gradient(to right, #1623ae, #090c5e);
+            margin-bottom: 30px;
+            color: #fff;
+            float: left;
+        }
+            .ADD-Btn:hover {
+                background: linear-gradient(to left, #1623ae, #1892a5);
+                color: #fff;
+            }
+                .ADD-Btn:hover .icon {
+                    background-color: #090c5e;
+                }
+            .ADD-Btn p {
+                float: left;
+            }
         @media(max-width: 430px) {
             table {
                 font-size: 10px;
@@ -182,60 +193,7 @@
                 font-size: 10px;
             }
         }
-        /*Nut Them*/
-        .text {
-            padding-top: 4px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        .icon {
-            margin: 10px 0px;
-            width: 30px;
-            height: 30px;
-            padding-left: 10px;
-            border-radius: 50%;
-            background-color: #1623ae;
-        }
-        .ADD-Btn {
-            margin-left: 20%;
-            width: 18%;
-            background: linear-gradient(to right, #1623ae, #090c5e);
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: #fff;
-            float: left;
-        }
-            .ADD-Btn:hover {
-                background: linear-gradient(to left, #1623ae, #1892a5);
-                color: #fff;
-            }
-                .ADD-Btn:hover .icon {
-                    background-color: #090c5e;
-                }
-            .ADD-Btn p {
-                float: left;
-            }
-        .ADD-Btn2 {
-            margin-left: 3%;
-            width: 20%;
-            background: linear-gradient(to right, #1623ae, #090c5e);
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: #fff;
-            float: left;
-        }
-            .ADD-Btn2:hover {
-                background: linear-gradient(to left, #1623ae, #1892a5);
-                color: #fff;
-            }
-                .ADD-Btn2:hover .icon {
-                    background-color: #090c5e;
-                }
-            .ADD-Btn2 p {
-                float: left;
-            }
+        
         @media(max-width: 1024px) {
             .ADD-Btn {
                 width: 30%;
@@ -257,10 +215,6 @@
                 width: 40%;
                 margin-left: 30%
             }
-            .ADD-Btn2 {
-                width: 47%;
-                margin-left: 27%
-            }
             table {
                 font-size: 9px;
             }
@@ -271,10 +225,6 @@
         }
         @media(max-width: 430px) {
             .ADD-Btn {
-                width: 55%;
-                margin-left: 22%
-            }
-            .ADD-Btn2 {
                 width: 55%;
                 margin-left: 22%
             }
@@ -291,19 +241,11 @@
                 width: 55%;
                 margin-left: 22%
             }
-            .ADD-Btn2 {
-                width: 63%;
-                margin-left: 18%
-            }
         }
         @media(max-width: 320px) {
             .ADD-Btn {
                 width: 70%;
                 margin-left: 15%
-            }
-            .ADD-Btn2 {
-                width: 75%;
-                margin-left: 12%
             }
             table{
                 font-size: 8px;
