@@ -65,7 +65,7 @@
                     }
                 .Cart__Products-group-product-info{
                     display: flex;
-                    flex-basis: 35%;
+                    flex-basis: 30%;
                     align-items: center;
                     justify-content: space-around;
                 }
@@ -99,7 +99,7 @@
                         }
                         .Cart__Products-Button input{
                             border: none;
-                            width: 50px;
+                            width: 30px !important;
                             text-align: center;
                         }
     .Cart__Products-Footer,
@@ -155,7 +155,7 @@
                 color: red;
                 font-size: 20px;
             }
-    mat-icon{
+    ion-icon{
         cursor: pointer;
     }
 

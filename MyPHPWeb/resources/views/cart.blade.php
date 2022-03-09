@@ -7,7 +7,7 @@
         <div class="Cart__Products">
             <div class="Cart__Products-Header">
                 <div class="Checkbox__All-Product">
-                    <input type="checkbox" name="" class="checkbox" id="checkbox__all-product" (click)="onCheckAll()">
+                    <input type="checkbox" name="" class="checkbox" id="checkbox__all-product" onclick="onCheckAll()">
                 </div>
                 <span>Chọn tất cả (1 sản phẩm)</span>
                 <div class="Title__Count">Số lượng</div>
@@ -29,19 +29,19 @@
 
                         <div class="Cart__Products-Count">
                             <div class="Cart__Products-Button">
-                                <button (click)="lessProducts()">
+                                <button onclick="lessProducts()">
                                     <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-remove.svg"
                                         alt="remove-icon" width="20" height="20">
                                 </button>
-                                <input type="text" value="{{number}}" placeholder="1" class="input">
-                                <button (click)="moreProducts()">
+                                <input id="inputNum" type="text" value="1" placeholder="1" class="input">
+                                <button onclick="moreProducts()">
                                     <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-add.svg"
                                         alt="add-icon" width="20" height="20">
                                 </button>
                             </div>
                         </div>
                         <span>186.000đ</span>
-                        <mat-icon>remove_shopping_cart</mat-icon>
+                        <ion-icon name="trash-outline"></ion-icon>
                     </div>
 
                 </div>
