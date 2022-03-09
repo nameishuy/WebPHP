@@ -29,33 +29,42 @@
             $last = 4;
             $pages = 1;
             $link = "sachpagination";
-            $IDCHUDE = null;
+            $IDCHUDE = "";
             if (isset($_GET["pages"])) {
                 $pages = $_GET["pages"];
             }
-            if ($_GET["chude"] != "") {
-                $link = "sachpaginationbychude/" .  $_GET["chude"];
-                $IDCHUDE = $_GET["chude"];
+            if (isset($_GET["chude"])) {
+                if ($_GET["chude"] != "") {
+                    $link = "sachpaginationbychude/" .  $_GET["chude"];
+                    $IDCHUDE = $_GET["chude"];
+                }
             }
+
             //Lấy tổng sản phẩm trong data bằng query select count(id) from name_table với JDBC Connect
             $total = WebController::countbook($IDCHUDE);
             $list = WebController::getlist($link, $pages, $last);
             foreach ($list as $data) {
-
+                if (isset($list["Messager"])) {
             ?>
-                <div class="Book">
-                    <div class="Book__Img">
-                        <img src="<?php echo $data["Anh"] ?>" alt="">
-                    </div>
-                    <div class="Book__Content">
-                        <div class="Book__Content-BookName">
-                            <h3><?php echo $data["Tensach"] ?></h3>
-                            <p class="Book__Content-Author"><?php echo $data["TenTG"] ?></p>
-                            <p class="Book__Content-Price"><?php echo $data["Giaban"] ?>đ</p>
+                    <h4><?php echo $list["Messager"] ?></h4>
+                <?php
+                } else {
+                ?>
+                    <div class="Book">
+                        <div class="Book__Img">
+                            <img src="<?php echo $data["Anh"] ?>" alt="">
+                        </div>
+                        <div class="Book__Content">
+                            <div class="Book__Content-BookName">
+                                <h3><?php echo $data["Tensach"] ?></h3>
+                                <p class="Book__Content-Author"><?php echo $data["TenTG"] ?></p>
+                                <p class="Book__Content-Price"><?php echo number_format($data["Giaban"], 3, '.', '') ?>đ</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
+            <?php
+                }
+            } ?>
         </div>
         <ul class="pagination" id="pagination">
             <?php
@@ -67,11 +76,17 @@
             } else {
                 $num = ($total + 1) / 4;
             }
-            //Nếu total lẻ thêm 1
+            //Nếu total lẻ
             if ($total % 2 != 0) {
-                $loop = ($total / 4) + 1;
+                //và lớn hơn fullpage thì thêm 1
+                if ($total > $last) {
+                    $loop = ($total / 4) + 1;
+                } else {
+                    //nếu không thì không thêm
+                    $loop = ($total / 4);
+                }
             } else {
-                //Nếu total chẵn nhỏ hơn fullpage và # fullPage thì thêm 1
+                //Nếu total chẵn nhỏ hơn fullpage và != fullPage thì thêm 1
                 if ($total < ($num * 4) + 4 && $total != $num * 4) {
                     $loop = ($total / 4) + 1;
                 } else {
@@ -85,7 +100,7 @@
                 <?php
                 if ($pages == $i) {
                 ?>
-                    <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $IDCHUDE ?>"><?php echo $i ?></a></li>
+                    <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $IDCHUDE ?>"><?php echo $i ?></a></li>
                 <?php
                 } else {
                 ?>
