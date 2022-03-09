@@ -15,7 +15,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="/admin_home">Home</a>
+                                        <a href="/admin">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Banner</li>
                                 </ol>
@@ -29,7 +29,7 @@
     <p class="text">THÊM BANNER</p>
     <p class="icon">&#43;</p>
 </a>    
-<table class="table" border="1">
+<table class="table" border="2.5" >
     <tr>
         <th>
             Banner
@@ -43,15 +43,12 @@
     
     <tr>
             <td>
-                {{-- @Html.DisplayFor(modelItem => item.TenSP) --}}
             </td>
             <td>
-                {{-- @Html.DisplayFor(modelItem => item.Giaban) --}}
             </td>
-            
             <td class="tool">
-                Sửa
-                Xóa
+                <a href="#">Sửa</a> /
+                <a href="#">Xóa</a>
             </td>
         </tr>
 
@@ -59,44 +56,16 @@
 </div>
 
      <style>
-        .pagination {
-            position: relative;
-            background: #fff;
-            display: flex;
-            padding: 10px 20px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,.2);
-            text-align: center;
-            justify-content: center
+        .tool{
+            width: 100px;
         }
-            .pagination > li {
-                margin: 0 5px;
-                width: 50px;
-                height: 50px;
-                line-height: 50px;
-                text-align: center;
-            }
-                .pagination > li > a {
-                    color: #777;
-                    font-weight: 600;
-                    border-radius: 50%;
-                    display: block;
-                }
-                .pagination > li:hover a,
-                .pagination > li.active a {
-                    background: #333;
-                    color: #fff
-                }
         .tool>a:hover {
             text-decoration: underline;
         }
-        .page {
-            text-align: center;
-            justify-content: center;
-            display: inline;
-        }
-        table {
+        .table {
             width: 100%;
+            font-size: 16px;
+            font-family: var(--bs-font-sans-serif);
         }
         img{
             width: 300px;
@@ -107,16 +76,54 @@
             background: #ffff;
             color: black;
             text-transform: uppercase;
+            font-size: 16px;
+            border: solid 1.5px;
+            text-align: center;
         }
         td {
             text-align: center;
-        }
-        th, td {
-            text-align: center;
+            border: solid 1.5px;
+            font-size: 16px;
         }
         td:hover {
             background-color: #ff006e;
         }
+        /*Nut Them*/
+        .text {
+            padding-top: 2px;
+            margin: 0 20px;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #1623ae;
+        }
+        .ADD-Btn {
+            margin-left: 45%;
+            width: fit-content;
+            height: 50px;
+            padding: 10px 10px;
+            background: linear-gradient(to right, #1623ae, #090c5e);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #fff;
+            float: left;
+        }
+            .ADD-Btn:hover {
+                background: linear-gradient(to left, #1623ae, #1892a5);
+                color: #fff;
+            }
+                .ADD-Btn:hover .icon {
+                    background-color: #090c5e;
+                }
+            .ADD-Btn p {
+                float: left;
+            }
+        
         @media(max-width: 430px) {
             table {
                 font-size: 10px;
@@ -138,41 +145,6 @@
                 font-size: 10px;
             }
         }
-        /*Nut Them*/
-        .text {
-            padding-top: 4px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        .icon {
-            margin: 10px 0px;
-            width: 30px;
-            height: 30px;
-            padding-left: 10px;
-            border-radius: 50%;
-            background-color: #1623ae;
-        }
-        .ADD-Btn {
-            margin-left: 45%;
-            width: 18%;
-            background: linear-gradient(to right, #1623ae, #090c5e);
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: #fff;
-            float: left;
-        }
-            .ADD-Btn:hover {
-                background: linear-gradient(to left, #1623ae, #1892a5);
-                color: #fff;
-            }
-                .ADD-Btn:hover .icon {
-                    background-color: #090c5e;
-                }
-            .ADD-Btn p {
-                float: left;
-            }
         
         @media(max-width: 1024px) {
             .ADD-Btn {

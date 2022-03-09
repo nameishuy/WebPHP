@@ -61,11 +61,11 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <div class="navbar-brand">
-                        <a class="container-fluid justify-content-around align-items-center" href="/admin" style="color:#fff; text-decoration: none;"> 
+                    <div class="container-fluid justify-content-around align-items-center" >
+                        <a class="navbar-brand d-flex align-items-center me-md-auto ms-md-5" style="color: #fff;" href="/admin">
                             <ion-icon name="book-outline"></ion-icon>
-							MBook
-            			</a>
+                            <p style="margin-bottom: 0; margin-right: 140px;">MBook</p>
+                        </a>
                     </div>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -208,6 +208,11 @@
     <script src="css/admin/assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="css/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="css/admin/dist/js/pages/dashboards/dashboard1.js"></script>
+
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
