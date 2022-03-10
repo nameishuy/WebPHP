@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebPHP-Laravel</title>
     <link rel="icon" type="image/png" sizes="16x16" href="css/admin/assets/images/favicon.png">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/user/footer.css">
+    <link rel="stylesheet" href="/css/user/header.css">
+    <link rel="stylesheet" href="/css/user/login.css">
 
     <!-- CSS Pages -->
-    <link rel="stylesheet" href="/css/util.css">
-    <link rel="stylesheet" href="/css/profile.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <link rel="stylesheet" href="/css/cart.css">
-    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/user/util.css">
+    <link rel="stylesheet" href="/css/user/profile.css">
+    <link rel="stylesheet" href="/css/user/home.css">
+    <link rel="stylesheet" href="/css/user/products.css">
+    <link rel="stylesheet" href="/css/user/cart.css">
+    <link rel="stylesheet" href="/css/user/details.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Boostrap 5 -->

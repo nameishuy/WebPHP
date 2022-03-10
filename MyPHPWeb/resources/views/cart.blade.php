@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <span>186.000đ</span>
-                        <ion-icon name="trash-outline"></ion-icon>
+                        <ion-icon class="trash" name="trash-outline"></ion-icon>
                     </div>
 
                 </div>
