@@ -71,27 +71,27 @@
             //Button Number pages
             $loop = 0;
             $num = 0;
-            if (($total / 4) % 2 == 0) {
+            if (($total / 8) % 2 == 0) {
                 $num = $total / 4;
             } else {
-                $num = ($total + 1) / 4;
+                $num = ($total + 1) / 8;
             }
             //Nếu total lẻ
             if ($total % 2 != 0) {
                 //và lớn hơn fullpage thì thêm 1
                 if ($total > $last) {
-                    $loop = ($total / 4) + 1;
+                    $loop = ($total / 8) + 1;
                 } else {
                     //nếu không thì không thêm
-                    $loop = ($total / 4);
+                    $loop = ($total / 8);
                 }
             } else {
                 //Nếu total chẵn nhỏ hơn fullpage và != fullPage thì thêm 1
-                if ($total < ($num * 4) + 4 && $total != $num * 4) {
-                    $loop = ($total / 4) + 1;
+                if ($total < ($num * 8) + 8 && $total != $num * 8) {
+                    $loop = ($total / 8) + 1;
                 } else {
                     //Nếu bằng fullPage thì không thêm
-                    $loop = ($total / 4);
+                    $loop = ($total / 8);
                 }
             }
             //Lap so pages

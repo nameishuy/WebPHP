@@ -57,6 +57,8 @@
 
 .Product__ListProduct {
     width: 70%;
+    display: flex;
+    flex-flow: column nowrap;
     box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.582);
     border-radius: 0.5rem;
     height: fit-content;
@@ -64,7 +66,7 @@
 
 .Product__ListProduct-Sort {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap !important;
     padding: 50px;
     position: relative;
 }
