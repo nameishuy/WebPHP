@@ -26,7 +26,7 @@
 
             use App\Http\Controllers\WebController;
 
-            $last = 4;
+            $last = 8;
             $pages = 1;
             $link = "sachpagination";
             $IDCHUDE = "";

@@ -69,12 +69,12 @@
     margin-bottom: 40px;
     padding-bottom: 20px;
     box-shadow: 0 0 2px 0 black;
+    transition: .5s;
 }
     .SellingBook:hover{
         cursor: pointer;
         box-shadow: 0 0 10px 4px rgba(163, 163, 163, 0.733);
         transform: translateY(-10px) !important;
-        transition: .5s;
     }
     .ImgBook{
         width: 100%;
@@ -123,6 +123,18 @@
         width: 30%;
         transform: rotate(-20deg) skew(-20deg,-3deg);
         box-shadow: -10px 0 20px 3px black;
+        animation: toUpAndDown 1s infinite;
+    }
+    @keyframes toUpAndDown{
+        0%{
+           transform: rotate(-20deg) skew(-20deg,-3deg) translateY(0px);
+        }
+        50%{
+            transform: rotate(-20deg) skew(-20deg,-3deg) translateY(10px);
+        }
+        100%{
+            transform: rotate(-20deg) skew(-20deg,-3deg) translateY(0px);
+        }
     }
         .Good__Book-image img{
             width: 100%;
@@ -163,6 +175,7 @@
                 background-color: rgba(255, 0, 0, 0.781);
                 box-shadow: 0 0 5px 0 black;
             }
+
 @media screen and (max-width:821px) {
     #carouselGoodBook{
         width: 80%;

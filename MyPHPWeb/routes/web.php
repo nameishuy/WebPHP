@@ -64,6 +64,11 @@ Route::get('/products', [WebController::class, 'product'])->name('product');
 
 Route::view('cart','cart');
 
+Route::view('/details','details');
+
+
+//Admin's Route
+
 Route::view('admin', 'admin_home');
 Route::view('admin_account', 'admin_account');
 Route::view('admin_product', 'admin_product');

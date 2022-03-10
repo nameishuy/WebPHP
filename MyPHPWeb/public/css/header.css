@@ -45,6 +45,7 @@ ion-icon {
 	justify-content:center;
 	align-items:center;
 	position: relative;
+	color: black;
 }
 	.Cart:hover{
 		background-color:black;
