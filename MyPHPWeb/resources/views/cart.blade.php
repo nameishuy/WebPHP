@@ -17,7 +17,7 @@
             <?php 
                 use App\Http\Controllers\WebController;
 
-                if(!WebController::ifEmptyCart()){
+                if(WebController::ifEmptyCart()){
                     echo "
                         <div class='Cart__Products-Empty'>
                         <div class='Cart__Products-Empty-image'>
