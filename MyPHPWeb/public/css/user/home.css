@@ -123,7 +123,7 @@
         width: 30%;
         transform: rotate(-20deg) skew(-20deg,-3deg);
         box-shadow: -10px 0 20px 3px black;
-        animation: toUpAndDown 1s infinite;
+        animation: toUpAndDown 2s infinite;
     }
     @keyframes toUpAndDown{
         0%{
@@ -164,16 +164,17 @@
             height: 40px;
             text-align: center;
             padding-top: 5px;
-            background-color: red;
+            background-color: rgba(255, 0, 0, 0.781);
             color: white;
             font-weight: 600;
             border: 1px solid red;
             margin: 10px 0 0 0;
+            transition: 1s;
         }
             .Good__Book-readnow:hover{
                 cursor: pointer;
-                background-color: rgba(255, 0, 0, 0.781);
-                box-shadow: 0 0 5px 0 black;
+                background-color: red;
+                box-shadow: 0 0 10px 0 red;
             }
 
 @media screen and (max-width:821px) {

@@ -42,11 +42,41 @@
                 display: flex;
                 align-items: center;
             }
+            .Cart__Products-Empty{
+                margin: 30px auto;
+                width: fit-content;
+                height: 180px;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: space-between;
+                align-items: center;
+                animation: toVisible 2s 1 forwards;
+            }
+                .Cart__Products-Empty-image{
+                    width: 150px;
+                    height: 150px;
+                    overflow: hidden;
+                    border-radius: 10rem;
+                }
+                    .Cart__Products-Empty-image img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .Cart__Products-Empty span{
+                        color: red;
+                        font-weight: 600;
+                    }
         .Cart__Products-Body{
             margin-top: 10px;
             border-top: 1px solid rgba(109, 109, 109, 0.308);
             border-bottom: 1px solid rgba(109, 109, 109, 0.308);
         }
+            .Cart__Bill-Info-Info-Name,
+            .Cart__Bill-Info-Info-Email,
+            .Cart__Bill-Info-Info-Phone,
+            .Cart__Bill-Info-Date{
+                line-height: 25px;
+            }
             .Cart__Products-item{
                 display: flex;
                 align-items: center;

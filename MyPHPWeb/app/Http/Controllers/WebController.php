@@ -47,4 +47,8 @@ class WebController extends Controller
         $book = json_decode(Http::get($url), true);     
         return $book;
     }
+
+    public static function ifEmptyCart(){
+        return true;
+    }
 }

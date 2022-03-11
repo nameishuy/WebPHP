@@ -14,6 +14,20 @@
                 <div class="Title__Price">Giá</div>
                 <div style="flex-basis: 5%;"></div>
             </div>
+            <?php 
+                use App\Http\Controllers\WebController;
+
+                if(!WebController::ifEmptyCart()){
+                    echo "
+                        <div class='Cart__Products-Empty'>
+                        <div class='Cart__Products-Empty-image'>
+                            <img src='https://i.pinimg.com/originals/ec/0c/0c/ec0c0c652f7a9fb965bf08f45c4403fe.gif' alt=''>
+                        </div>
+                        <span>Bạn hiện chưa chọn sách nào</span>
+                        </div>
+                    ";
+                }
+            ?>
             <div class="Cart__Products-Body">
                 <div class="Cart__Products-item">
                     <div class="checkbox__product">
@@ -47,7 +61,7 @@
                 </div>
             </div>
             <div class="Cart__Products-Footer">
-                Cập Nhật Giá
+                Xóa Tất Cả
             </div>
         </div>
         <div class="Cart__Bill">
@@ -56,8 +70,11 @@
                 <span class="Cart__Bill-Info-Name">
                     Tên: Đông Gia Huy
                 </span>
-                <span class="Cart__Bill-Info-BillID">
-                    Mã Giao Dịch: E0534
+                <span class="Cart__Bill-Info-Email">
+                    Email: yourname@gmail.com
+                </span>
+                <span class="Cart__Bill-Info-Phone">
+                    SDT: 0933226682
                 </span>
                 <span class="Cart__Bill-Info-Date">
                     Ngày Giao Dịch: 09/03/2022

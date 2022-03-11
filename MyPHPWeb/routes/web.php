@@ -62,7 +62,8 @@ Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 
 Route::get('/products', [WebController::class, 'product'])->name('product');
 
-Route::view('cart','cart');
+Route::view('/cart','cart');
+
 
 Route::view('/details','details');
 
