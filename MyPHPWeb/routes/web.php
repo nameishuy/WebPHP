@@ -70,7 +70,6 @@ Route::view('/details','details');
 
 //Admin's Route
 
-Route::view('admin', 'admin_home');
-Route::view('admin_account', 'admin_account');
-Route::view('admin_product', 'admin_product');
-Route::view('admin_banner', 'admin_banner');
+Route::view('admin', 'admin_index');
+Route::view('admin/account-manager','admin_account');
+Route::view('admin/bill-pay','admin_billpay');
