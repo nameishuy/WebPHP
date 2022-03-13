@@ -11,16 +11,18 @@
         </ul>
     </div>
     <div class="Product__ListProduct">
-        <div class="Product__ListProduct-Sort">
-            <input type="text" class="form-control" placeholder="Search..." />
-            <div class="Product__ListProduct-SortArea">
-                <h5>Sắp xếp theo:</h5>
-                <select class="form-select" aria-label="-- Loại Sắp Xếp --">
-                    <option selected>Giá Tăng Dần</option>
-                    <option value="1">Giá Giảm Dần</option>
-                </select>
+        <form action="{{url('products')}}" method="GET">
+            <div class="Product__ListProduct-Sort">
+                <input type="text" name="search" class="form-control" placeholder="Search..." />
+                <div class="Product__ListProduct-SortArea">
+                    <h5>Sắp xếp theo:</h5>
+                    <select class="form-select" aria-label="-- Loại Sắp Xếp --">
+                        <option selected>Giá Tăng Dần</option>
+                        <option value="1">Giá Giảm Dần</option>
+                    </select>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="Product__List" style="float: left;">
             <?php
 
@@ -28,23 +30,17 @@
 
             $last = 8;
             $pages = 1;
-            $link = "sachpagination";
-            $IDCHUDE = "";
+
             if (isset($_GET["pages"])) {
                 $pages = $_GET["pages"];
             }
-            if (isset($_GET["chude"])) {
-                if ($_GET["chude"] != "") {
-                    $link = "sachpaginationbychude/" .  $_GET["chude"];
-                    $IDCHUDE = $_GET["chude"];
-                }
-            }
-
             //Lấy tổng sản phẩm trong data bằng query select count(id) from name_table với JDBC Connect
-            $total = WebController::countbook($IDCHUDE);
-            $list = WebController::getlist($link, $pages, $last);
+            $total = WebController::countbook();
+            //Lấy Danh Sách Sản Phẩm
+            $list = WebController::getlist($pages, $last);
             foreach ($list as $data) {
                 if (isset($data["Messager"])) {
+
             ?>
                     <h4><?php echo $data["Messager"] ?></h4>
                 <?php
@@ -66,6 +62,7 @@
                 }
             } ?>
         </div>
+
         <ul class="pagination" id="pagination">
             <?php
             //Button Number pages
@@ -79,12 +76,7 @@
             //Nếu total lẻ
             if ($total % 2 != 0) {
                 //và lớn hơn fullpage thì thêm 1
-                if ($total > $last) {
-                    $loop = ($total / 8) + 1;
-                } else {
-                    //nếu không thì không thêm
-                    $loop = ($total / 8);
-                }
+                $loop = ($total / 8) + 1;
             } else {
                 //Nếu total chẵn nhỏ hơn fullpage và != fullPage thì thêm 1
                 if ($total < ($num * 8) + 8 && $total != $num * 8) {
@@ -96,20 +88,42 @@
             }
             //Lap so pages
             for ($i = 1; $i <= $loop; $i++) {
+
+                if (isset($_GET["chude"])) {
+
+                    if ($pages == $i) {
             ?>
-                <?php
-                if ($pages == $i) {
-                ?>
-                    <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $IDCHUDE ?>"><?php echo $i ?></a></li>
-                <?php
+                        <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $_GET["chude"] ?>"><?php echo $i ?></a></li>
+                    <?php
+                    } else {
+                    ?>
+                        <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $_GET["chude"] ?>"><?php echo $i ?></a></li>
+                    <?php
+                    }
+                } elseif (isset($_GET["search"])) {
+                    if ($pages == $i) {
+                    ?>
+                        <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>&search=<?php echo $_GET["search"] ?>"><?php echo $i ?></a></li>
+                    <?php
+                    } else {
+                    ?>
+                        <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>&search=<?php echo $_GET["search"] ?>"><?php echo $i ?></a></li>
+                    <?php
+                    }
                 } else {
-                ?>
-                    <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>&chude=<?php echo $IDCHUDE ?>"><?php echo $i ?></a></li>
-            <?php
+                    if ($pages == $i) {
+                    ?>
+                        <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
+                    <?php
+                    } else {
+                    ?>
+                        <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
+            <?php }
                 }
-            }
-            ?>
+            } ?>
         </ul>
+
+
     </div>
 </div>
 @endsection
