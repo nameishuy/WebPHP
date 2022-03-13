@@ -69,7 +69,9 @@ Route::view('/details','details');
 
 
 //Admin's Route
+Route::prefix('admin')->group(function (){
+    Route::view('', 'admin_index');
+    Route::view('account-manager','admin_account');
+    Route::view('bill-pay','admin_billpay');
+});
 
-Route::view('admin', 'admin_index');
-Route::view('admin/account-manager','admin_account');
-Route::view('admin/bill-pay','admin_billpay');

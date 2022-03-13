@@ -14,7 +14,7 @@
         class="navbar navbar-expand-md navbar-light border-bottom border-3 align-items-center">
         <div class="container-fluid justify-content-around align-items-center">
             <a class="navbar-brand d-flex align-items-center me-md-auto ms-md-5"
-                href="/JavaWebMVC/"> <ion-icon name="book-outline"></ion-icon> MBook
+                href="/"> <ion-icon name="book-outline"></ion-icon> MBook
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarMenu" aria-controls="navbarMenu"
@@ -24,6 +24,7 @@
             <div class="collapse navbar-collapse"
                 id="navbarMenu">
                 <ul class="navbar-nav text-center p-md-3 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/admin">Trang Chủ</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page"
                         href="/admin/account-manager">Tài Khoản</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/bill-pay">Hóa Đơn</a></li>

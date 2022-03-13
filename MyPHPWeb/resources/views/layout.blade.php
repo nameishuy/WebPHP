@@ -59,7 +59,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuAccount">
                     <li><a class="dropdown-item" id="Item__Account" href="/profile">Thông Tin Tài Khoản</a></li>
-                    <li><a class="dropdown-item" id="Item__Account" href="#">Admin</a></li>
+                    <li><a class="dropdown-item" id="Item__Account" href="/admin">Admin</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
