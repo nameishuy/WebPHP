@@ -28,7 +28,8 @@
                     <li class="nav-item"><a class="nav-link" aria-current="page"
                         href="/admin/account-manager">Tài Khoản</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/bill-pay">Hóa Đơn</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Thiết Lập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/storage-products">Hàng Tồn Kho</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/setting">Thiết Lập</a></li>
                 </ul>
             </div>
         </div>
@@ -74,6 +75,40 @@
             </div>
         </div>
     </div>
+    <div class="DialogDeleteAccount__Container" id="Dialog_Messenger">
+        <div class="DialogDeleteAccount">
+            <div class="DialogDeleteAccount__CloseBtn" onclick="closeDialogDeleteAccount()">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </div>
+            <div class="DialogDeleteAccount__infoUser">
+                <h1 style="margin: auto;">Bạn Muốn Xóa Tài Khoản Này?</h1>
+                <h1>Tất Cả Dữ Liệu Của Tài Khoản Này Sẽ Bị Mất</h1>
+            </div>
+            <div class="DeleteAccount__Setting">
+                <div class="DeleteAccount__Setting-details DeleteAccount__Setting-YES">
+                    Yes
+                </div>
+                <div class="DeleteAccount__Setting-details" onclick="closeDialogDeleteAccount()">
+                    No
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="DialogChangeDetailsProduct__Container" id="DialogChangeDetailsProduct__Container">
+        <div class="DialogChangeDetailsProduct">
+            <div class="DialogChangeDetailsProduct__CloseBtn" onclick="closeDialogChangeDetails()">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </div>
+            <div class="DialogChangeDetailsProduct__changeDetails">
+                <h1>Cập Nhật</h1>
+                Thêm số lượng tồn: <input type="text" name="storageNum" id="">
+                Giá: <input type="text" name="storagePrice" id="">
+            </div>
+            <div class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES">
+                Cập Nhật
+            </div>
+        </div>
+    </div>
         <div class="Body__Container">
             @yield('admincontent')
         </div>
@@ -96,6 +131,25 @@
                 let details = document
                         .getElementById("DialogDetailsPay__Container");
                 details.style.display = "none";
+            }
+
+            function showDialogDeleteAccount(){
+                let dialog = document.getElementById("Dialog_Messenger");
+                dialog.style.display = "block";
+            }
+
+            function closeDialogDeleteAccount(){
+                let dialog = document.getElementById("Dialog_Messenger");
+                dialog.style.display = "none";
+            }
+            function closeDialogChangeDetails(){
+                let dialog = document.getElementById("DialogChangeDetailsProduct__Container");
+                dialog.style.display="none";
+            }
+
+            function showDialogChangeDetailsProduct(){
+                let dialog = document.getElementById("DialogChangeDetailsProduct__Container");
+                dialog.style.display="block";
             }
         </script>
 </body>

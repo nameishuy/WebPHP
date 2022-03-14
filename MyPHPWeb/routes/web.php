@@ -75,5 +75,7 @@ Route::prefix('admin')->group(function (){
     Route::view('', 'admin_index');
     Route::view('account-manager','admin_account');
     Route::view('bill-pay','admin_billpay');
+    Route::view('storage-products','admin_storage');
+    Route::view('setting','admin_setting');
 });
 
