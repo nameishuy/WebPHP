@@ -59,7 +59,11 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuAccount">
                     <li><a class="dropdown-item" id="Item__Account" href="/profile">Thông Tin Tài Khoản</a></li>
-                    <li><a class="dropdown-item" id="Item__Account" href="/admin">Admin</a></li>
+
+                    @if (Session::get('UserLogin')['Role'] == true)
+                        <li><a class="dropdown-item" id="Item__Account" href="/admin">Admin</a></li>
+                    @endif
+
                     <li>
                         <hr class="dropdown-divider">
                     </li>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Acc;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,11 +72,13 @@ Route::view('/details','details');
 
 
 //Admin's Route
+//Admin's Route
 Route::prefix('admin')->group(function (){
-    Route::view('', 'admin_index');
-    Route::view('account-manager','admin_account');
-    Route::view('bill-pay','admin_billpay');
-    Route::view('storage-products','admin_storage');
-    Route::view('setting','admin_setting');
+    Route::get('', [AdminController::class, 'AdminIndex']);
+
+    Route::get('account-manager',[AdminController::class, 'AdminAccount']);
+    Route::get('bill-pay',[AdminController::class, 'AdminBill']);
+    Route::get('storage-products',[AdminController::class, 'AdminStorage']);
+    Route::get('setting',[AdminController::class, 'AdminSetting']);
 });
 
