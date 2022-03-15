@@ -65,29 +65,19 @@
 
         <ul class="pagination" id="pagination">
             <?php
-            //Button Number pages
-            $loop = 0;
-            $num = 0;
-            if (($total / 8) % 2 == 0) {
-                $num = $total / 4;
-            } else {
-                $num = ($total + 1) / 8;
-            }
-            //Nếu total lẻ
-            if ($total % 2 != 0) {
-                //và lớn hơn fullpage thì thêm 1
-                $loop = ($total / 8) + 1;
-            } else {
-                //Nếu total chẵn nhỏ hơn fullpage và != fullPage thì thêm 1
-                if ($total < ($num * 8) + 8 && $total != $num * 8) {
-                    $loop = ($total / 8) + 1;
+            $TotalPage = ceil($total / $last);
+
+            if ($pages > 1 && $TotalPage > 1) {
+                if (isset($_GET["chude"])) {
+                    echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages - 1) . '&chude=' . $_GET["chude"] . '">Prev</a></li>';
+                } elseif (isset($_GET["search"])) {
+                    echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages - 1) . '&chude=' . $_GET["search"] . '">Prev</a></li>';
                 } else {
-                    //Nếu bằng fullPage thì không thêm
-                    $loop = ($total / 8);
+                    echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages - 1) . '">Prev</a></li>';
                 }
             }
             //Lap so pages
-            for ($i = 1; $i <= $loop; $i++) {
+            for ($i = 1; $i <= $TotalPage; $i++) {
 
                 if (isset($_GET["chude"])) {
 
@@ -120,7 +110,19 @@
                         <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
             <?php }
                 }
-            } ?>
+            }
+
+            if ($pages < $TotalPage && $TotalPage > 1) {
+                if (isset($_GET["chude"])) {
+                    echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages + 1) . '&chude=' . $_GET["chude"] . '">Next</a></li>';
+                } elseif (isset($_GET["search"])) {
+                    echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages + 1) . '&chude=' . $_GET["search"] . '">Next</a></li>';
+                } else {
+                    echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages + 1) . '">Next</a></li>';
+                }
+            }
+
+            ?>
         </ul>
 
 
