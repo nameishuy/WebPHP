@@ -317,6 +317,52 @@
   .DialogChangeDetailsProduct{
 	width: 15vw;
   }
+
+
+  /* NotAdmin's Page*/
+.NotAdminPage__Container{
+	min-height: 70vh;
+	display: flex;
+	flex-flow: column nowrap;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+}
+.NotAdminPage__Container-Image{
+	width: 300px;
+	height: 300px;
+}
+.NotAdminPage__Container-Image img{
+	width: 100%;
+	height: 100%;
+}
+.NotAdminPage__Container-Announce{
+	text-align: center;
+	height: fit-content;
+}
+.NotAdminPage__Container-Announce-Content{
+	margin-bottom: 20px;
+	font-weight: 600;
+	font-size: 23px;
+	color: red;
+}
+.NotAdminPage__Container-Announce-BtnBack{
+	background-color: rgba(255, 0, 0, 0.651);
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: .5rem;
+	cursor: pointer;
+	text-decoration: none;
+	transition: 1s;
+	color: white;
+}
+
+.NotAdminPage__Container-Announce-BtnBack:hover{
+	box-shadow: 0 0 10px 0 red;
+	color: white;
+	background-color: red;
+	text-decoration: none;
+}
 /* Responsive */
 @media screen and (max-width: 415px) {
 	.Admin__Container {
