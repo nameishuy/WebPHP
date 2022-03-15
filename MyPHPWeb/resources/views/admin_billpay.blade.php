@@ -19,7 +19,7 @@
             <div class="Bill__DatePay"><?php echo date('j \\ F Y', strtotime($bill['Ngaydat'])) ?></div>
 
             <div class="Bill__Setting">
-                <div class="Bill__Setting-details" onclick="showDialog()">Chi
+                <div class="Bill__Setting-details" onclick="showDialog('<?php echo $bill['id'] ?>')">Chi
                     Tiết</div>
             </div>
         </div>
@@ -48,6 +48,6 @@
         }
         ?>
     </ul>
-    
+
 </div>
 @endsection

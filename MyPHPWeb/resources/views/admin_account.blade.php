@@ -31,16 +31,15 @@
 
             <?php
             if ($user['Role'] == true) echo "<div class='User__role' >Admin</div>";
-            else {
-                echo "<div class='User__role' >Khách</div>";
-                echo "
-                            <div class='User__setting'>
-                                <div class='User__setting-deleteAccount' onclick='showDialogDeleteAccount()'>
-                                    Xóa Tài Khoản
-                                </div>
-                            </div>
-                        ";
-            }
+            else { ?>
+                <div class='User__role'>Khách</div>
+
+                <div class='User__setting'>
+                    <div class='User__setting-deleteAccount' onclick="showDialogDeleteAccount('<?php echo $user['_id'] ?>','<?php echo $user['Role'] ?>')">
+                        Xóa Tài Khoản
+                    </div>
+                </div>
+            <?php    }
             ?>
         </div>
     <?php } ?>

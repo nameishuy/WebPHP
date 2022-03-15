@@ -76,7 +76,7 @@ Route::view('/details','details');
 Route::prefix('admin')->group(function (){
     Route::get('', [AdminController::class, 'AdminIndex']);
 
-    Route::get('account-manager',[AdminController::class, 'AdminAccount']);
+    Route::get('account-manager',[AdminController::class, 'AdminAccount'])->name('account-manager');
     Route::get('bill-pay',[AdminController::class, 'AdminBill']);
     Route::get('storage-products',[AdminController::class, 'AdminStorage']);
     Route::get('setting',[AdminController::class, 'AdminSetting']);
