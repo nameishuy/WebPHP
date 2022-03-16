@@ -100,8 +100,8 @@
                     <div class="Good__Book-body">
                         {{$sach["Mota"]}}
                     </div>
-                    <div class="Good__Book-readnow">
-                        <a href="/details?id={{$sach['id']}}">Đọc Ngay</a>
+                    <div class="Good__Book-readnow" href="/details?id={{$sach['id']}}">
+                        Đọc Ngay
                     </div>
                 </div>
             </div>
@@ -120,9 +120,9 @@
                     <div class="Good__Book-body">
                         {{$sach["Mota"]}}
                     </div>
-                    <div class="Good__Book-readnow">
-                        <a href="/details?id={{$sach['id']}}">Đọc Ngay</a>
-                    </div>
+                    <a class="Good__Book-readnow" href="/details?id={{$sach['id']}}">
+                        Đọc Ngay
+                    </a>
                 </div>
             </div>
         </div>

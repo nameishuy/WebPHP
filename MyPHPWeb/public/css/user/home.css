@@ -70,11 +70,15 @@
     padding-bottom: 20px;
     box-shadow: 0 0 2px 0 black;
     transition: .5s;
+    text-decoration: none;
+    color: black;
 }
     .SellingBook:hover{
         cursor: pointer;
         box-shadow: 0 0 10px 4px rgba(163, 163, 163, 0.733);
         transform: translateY(-10px) !important;
+        text-decoration: none;
+        color: black;
     }
     .ImgBook{
         width: 100%;
@@ -163,18 +167,21 @@
             width: 100px;
             height: 40px;
             text-align: center;
-            padding-top: 5px;
+            padding-top: 6px;
             background-color: rgba(255, 0, 0, 0.781);
             color: white;
             font-weight: 600;
+            font-size: 15px;
             border: 1px solid red;
             margin: 10px 0 0 0;
+            text-decoration: none;
             transition: 1s;
         }
             .Good__Book-readnow:hover{
                 cursor: pointer;
                 background-color: red;
                 box-shadow: 0 0 10px 0 red;
+                text-decoration: none;
             }
 
 @media screen and (max-width:821px) {
