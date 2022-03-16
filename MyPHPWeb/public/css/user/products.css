@@ -111,11 +111,15 @@
     margin: 20px 20px 20px 20px;
     border: 1px solid rgba(0, 0, 0, 0.582);
     transition: .5s;
+    text-decoration: none;
+    color: black;
 }
 
 .Book:hover {
     box-shadow: 0 0 10px 4px rgba(163, 163, 163, 0.733);
     transform: translateY(-10px);
+    color: black;
+    text-decoration: none;
 }
 
 .Book__Img {
@@ -160,14 +164,7 @@
         width: max-content !important;
         margin: 0 auto 30px auto !important;
     }
-    	#pagination li a{
-            border: 1px solid black !important;
-            background-color: black !important;
-    		color:white !important;
-    	}
-            #pagination li a:hover{
-                background-color: red !important;
-            }
+
 @media screen and (max-width: 821px) {
     .Product__Container {
         padding: 0;

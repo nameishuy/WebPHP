@@ -70,9 +70,7 @@ Route::get('/products', [WebController::class, 'product'])->name('product');
 Route::view('/cart','cart');
 Route::get('/cart', function(){
     if (session()->has("idbookforcart")) {
-        $array = session()->get("idbookforcart");
-        array_push($array, $_GET['id']);
-        session()->put("idbookforcart", $array);
+        session()->put("idbookforcart", $_GET['id']);
 
     } else {
         $arr = array($_GET['id']);
