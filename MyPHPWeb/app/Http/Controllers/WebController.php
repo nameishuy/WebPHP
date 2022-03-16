@@ -88,4 +88,5 @@ class WebController extends Controller
         $bookdetails = json_decode(Http::get($url), true);    
         return view('details', ['details' => $bookdetails]);
     }
+
 }

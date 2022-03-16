@@ -87,4 +87,12 @@ class AdminController extends Controller
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
+
+    function AdminAddNewBook(Request $req){
+        if (isset($req->session()->get("UserLogin")["Role"])) {
+            if ($req->session()->get("UserLogin")["Role"] == true) {
+                return view('admin_addnewbook');
+            } else return view('admin_notAdmin');
+        } else return view('admin_notAdmin');
+    }
 }

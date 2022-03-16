@@ -37,9 +37,9 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="Book__info-btnCart" onclick="addCart()">
+                        <a class="Book__info-btnCart" href="/cart?id=<?php echo $bk['id']; ?>">
                             <span>Chọn Mua</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="Book__info-About">

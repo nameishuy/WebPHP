@@ -22,8 +22,9 @@ class Acc extends Controller
             $req->session()->put('UserLogin', $data);
             if (isset($data['id'])) {
                 return App::call('App\Http\Controllers\WebController@index');
+            }else{
+                return view('signin');
             }
-            return view('signin');
         }
     }
 

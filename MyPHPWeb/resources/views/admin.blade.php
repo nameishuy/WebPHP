@@ -27,6 +27,7 @@
                     <li class="nav-item"><a class="nav-link" href="/admin/bill-pay">Hóa Đơn</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/storage-products">Hàng Tồn Kho</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/setting">Thiết Lập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/add-newbook">Thêm Sách Mới</a></li>
                 </ul>
             </div>
         </div>

@@ -29,7 +29,9 @@ Route::view('signin', 'signin');
 Route::get('/signin', function () {
 
     if (session()->has('UserLogin')) {
-        return view('home');
+        if(isset($data['id'])){
+            return view('home');
+        }else return view('signin');
     } else {
         return view('signin');
     }
@@ -65,7 +67,28 @@ Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 Route::view('/products', 'products');
 Route::get('/products', [WebController::class, 'product'])->name('product');
 
-Route::view('/cart', 'cart');
+Route::view('/cart','cart');
+Route::get('/cart', function(){
+    if (session()->has("idbookforcart")) {
+        $array = session()->get("idbookforcart");
+        array_push($array, $_GET['id']);
+        session()->put("idbookforcart", $array);
+
+    } else {
+        $arr = array($_GET['id']);
+        session()->put("idbookforcart", $arr);
+    }
+    dd(session()->get("idbookforcart"));
+    if (session()->has('UserLogin')) {
+        
+        if (isset(session()->get('UserLogin')['id'])) {
+            $id = session()->get('UserLogin')['id'];
+            $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
+            
+            return view('cart', ['data' => $data]);
+        } else return view('cart', ['data']);
+    }else return view('cart', ['data']);
+});
 
 
 Route::view('/details', 'details');
@@ -81,4 +104,5 @@ Route::prefix('admin')->group(function () {
     Route::get('bill-pay', [AdminController::class, 'AdminBill']);
     Route::get('storage-products', [AdminController::class, 'AdminStorage']);
     Route::get('setting', [AdminController::class, 'AdminSetting']);
+    Route::get('add-newbook', [AdminController::class, 'AdminAddNewBook']);
 });
