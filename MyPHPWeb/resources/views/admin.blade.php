@@ -32,7 +32,7 @@
         </div>
     </nav>
     <div class="DialogDetailsPay__Container" id="DialogDetailsPay__Container">
-        <div class="DialogDetailsPay">
+        <div id="DialogDetailsPay" class="DialogDetailsPay">
             <div class="DialogDetailsPay__CloseBtn" onclick="closeDialog()">
                 <ion-icon name="close-circle-outline"></ion-icon>
             </div>
@@ -40,13 +40,13 @@
                 <h1>THÔNG TIN ĐƠN HÀNG</h1>
                 <div class="DialogDetailsPay__infoUser-Details">
                     <span>
-                        <span style="font-weight: bold;" id="Ten"></span>
+                        <span style="font-weight: bold;">Tên Khách Hàng: </span><span id="Ten"></span>
                     </span>
                     <span>
-                        <span style="font-weight: bold;" id="Ma"></span>
+                        <span style="font-weight: bold;">Mã Đơn Hàng: </span><span id="Ma"></span>
                     </span>
                     <span>
-                        <span style="font-weight: bold;" id="Date"></span>
+                        <span style="font-weight: bold;">Ngày Đặt: </span><span style="font-weight: bold;" id="Date"></span>
                     </span>
                     <span>
                         <span style="font-weight: bold;">Tổng Tiền: </span><span style="color: red; font-weight: 600;" id="Money"></span>đ
@@ -56,20 +56,51 @@
                     </span>
                 </div>
             </div>
+
             <div class="DialogDetailsPay__infoPay">
                 <div class="DialogDetailsPay__Title-Image">Ảnh</div>
                 <div class="DialogDetailsPay__Title-BookName">Tên Sách</div>
                 <div class="DialogDetailsPay__Title-Count">Số Lượng</div>
                 <div class="DialogDetailsPay__Title-Price">Thành Tiền</div>
             </div>
-            <div class="DialogDetailsPay__infoPay-Details">
-                <div class="DialogDetailsPay__Image">
-                    <img src="https://taisachmoi.com/wp-content/uploads/2018/12/dac-nhan-tam.jpg" alt="">
-                </div>
-                <div class="DialogDetailsPay__BookName">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, culpa, ipsum nisi tempore aliquid reprehenderit debitis harum sapiente iste.</div>
-                <div class="DialogDetailsPay__Count">3</div>
-                <div class="DialogDetailsPay__Price">300.000đ</div>
-            </div>
+
+            <script>
+                function showDialog(idBill) {
+                    let details = document
+                        .getElementById("DialogDetailsPay__Container");
+                    details.style.display = "block";
+                    this.getData("DonHangbyid/" + idBill).then(data => {
+                        let money = new Intl.NumberFormat('vi-VN', {
+                            maximumSignificantDigits: 6
+                        }).format(data[0].TongTien)
+                        document.getElementById('Ten').innerHTML = data[0].HoTen;
+                        document.getElementById('Ma').innerHTML = data[0].id;
+                        document.getElementById('Date').innerHTML = data[0].Ngaydat;
+                        document.getElementById('Money').innerHTML = money;
+                        if (data[0].Tinhtranggiaohang) {
+                            document.getElementById('TinhTrangTrue').innerHTML = "Đã Giao Hàng";
+
+                        } else {
+                            document.getElementById('TinhTrangFalse').innerHTML = "Chưa Giao Hàng";
+                        }
+
+                    }).catch(err => {
+                        alert(err)
+                    })
+                    this.getData("CTDonHangbyid/" + idBill).then(result => {
+                        for (let data of result) {
+                            let money = new Intl.NumberFormat('vi-VN', {
+                                maximumSignificantDigits: 6
+                            }).format(data.Dongia + data.Soluong)
+
+                            document.getElementById("DialogDetailsPay").innerHTML += '  <div class="DialogDetailsPay__infoPay-Details"><div class="DialogDetailsPay__Image"><img id="Anh" src="' + data.Anhbia + '" alt="#"></div><div id="Tensach" class="DialogDetailsPay__BookName">' + data.Tensach + '</div><div id="Soluong" class="DialogDetailsPay__Count">' + data.Soluong + '</div><div id="Dongia" class="DialogDetailsPay__Price">' + money + '</div></div>';
+
+                        }
+                    }).catch(err => {
+                        alert(err)
+                    })
+                }
+            </script>
         </div>
     </div>
     <div class="DialogDeleteAccount__Container" id="Dialog_Messenger">
@@ -117,33 +148,9 @@
         let Role
         let userid
         let idbook
-        let ListBill
+        let ListCTBill
         let SolnTon = 0
         let Product__Price = 0
-
-        function showDialog(idBill) {
-            let details = document
-                .getElementById("DialogDetailsPay__Container");
-            details.style.display = "block";
-            this.getData("DonHangbyid/" + idBill).then(data => {
-                let money = new Intl.NumberFormat('vi-VN', {
-                    maximumSignificantDigits: 7
-                }).format(data[0].TongTien)
-                document.getElementById('Ten').innerHTML = "Tên Khách Hàng: " + data[0].HoTen;
-                document.getElementById('Ma').innerHTML = "Mã Đơn Hàng: " + data[0].id;
-                document.getElementById('Date').innerHTML = "Ngày Đặt Hàng: " + data[0].Ngaydat;
-                document.getElementById('Money').innerHTML = money;
-                if (data[0].Tinhtranggiaohang) {
-                    document.getElementById('TinhTrangTrue').innerHTML = "Đã Giao Hàng";
-
-                } else {
-                    document.getElementById('TinhTrangFalse').innerHTML = "Chưa Giao Hàng";
-                }
-
-            }).catch(err => {
-                alert(err)
-            })
-        }
 
         function closeDialog() {
             let details = document
