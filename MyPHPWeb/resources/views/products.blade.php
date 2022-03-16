@@ -46,7 +46,7 @@
                 <?php
                 } else {
                 ?>
-                    <div class="Book">
+                    <a class="Book" href="/details?id={{$data['id']}}">
                         <div class="Book__Img">
                             <img src="<?php echo $data["Anh"] ?>" alt="">
                         </div>
@@ -57,7 +57,7 @@
                                 <p class="Book__Content-Price"><?php echo number_format($data["Giaban"], 3, '.', '') ?>đ</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
             <?php
                 }
             } ?>

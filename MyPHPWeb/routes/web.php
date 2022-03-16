@@ -26,11 +26,11 @@ Route::get('/link', function () {
 
 Route::post('signin', [Acc::class, 'login'])->name('login');
 Route::view('signin', 'signin');
-Route::get('/signin',function(){
+Route::get('/signin', function () {
 
-    if(session()->has('UserLogin')){
+    if (session()->has('UserLogin')) {
         return view('home');
-    }else{
+    } else {
         return view('signin');
     }
 });
@@ -65,20 +65,20 @@ Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 Route::view('/products', 'products');
 Route::get('/products', [WebController::class, 'product'])->name('product');
 
-Route::view('/cart','cart');
+Route::view('/cart', 'cart');
 
 
-Route::view('/details','details');
+Route::view('/details', 'details');
+Route::get('/details', [WebController::class, 'details']);
 
 
 //Admin's Route
 //Admin's Route
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->group(function () {
     Route::get('', [AdminController::class, 'AdminIndex']);
 
-    Route::get('account-manager',[AdminController::class, 'AdminAccount'])->name('account-manager');
-    Route::get('bill-pay',[AdminController::class, 'AdminBill']);
-    Route::get('storage-products',[AdminController::class, 'AdminStorage']);
-    Route::get('setting',[AdminController::class, 'AdminSetting']);
+    Route::get('account-manager', [AdminController::class, 'AdminAccount'])->name('account-manager');
+    Route::get('bill-pay', [AdminController::class, 'AdminBill']);
+    Route::get('storage-products', [AdminController::class, 'AdminStorage']);
+    Route::get('setting', [AdminController::class, 'AdminSetting']);
 });
-
