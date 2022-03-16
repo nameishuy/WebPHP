@@ -75,4 +75,17 @@ class WebController extends Controller
     {
         return true;
     }
+
+
+    function details(Request $req)
+    {
+        $id = "";
+        $url = "https://bookingapiiiii.herokuapp.com/";
+        if (isset($_GET["id"])) {
+            $id =   $_GET['id'];
+            $url =  $url . "sachbyid/" . $id;
+        }
+        $bookdetails = json_decode(Http::get($url), true);    
+        return view('details', ['details' => $bookdetails]);
+    }
 }

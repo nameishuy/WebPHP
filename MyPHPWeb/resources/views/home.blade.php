@@ -35,7 +35,7 @@
         <div class="carousel-item active">
             <div class="Slide__Book">
                 @foreach($book1 as $bk1)
-                <div class="SellingBook">
+                <a class="SellingBook" href="/details?id={{$bk1['id']}}">
                     <div class="ImgBook">
                         <img src="{{$bk1['Anh']}}" alt="">
                     </div>
@@ -47,14 +47,14 @@
                             {{$bk1['TenTG']}}
                         </p>
                     </div>
-                </div>
+                </a>
                 @endforeach
             </div>
         </div>
         <div class="carousel-item">
             <div class="Slide__Book">
                 @foreach($book2 as $bk2)
-                <div class="SellingBook">
+                <a class="SellingBook" href="/details?id={{$bk2['id']}}">
                     <div class="ImgBook">
                         <img src="{{$bk2['Anh']}}" alt="">
                     </div>
@@ -66,7 +66,7 @@
                             {{$bk2['TenTG']}}
                         </p>
                     </div>
-                </div>
+                </a>
                 @endforeach
 
             </div>
@@ -101,7 +101,7 @@
                         {{$sach["Mota"]}}
                     </div>
                     <div class="Good__Book-readnow">
-                        <a>Đọc Ngay</a>
+                        <a href="/details?id={{$sach['id']}}">Đọc Ngay</a>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                         {{$sach["Mota"]}}
                     </div>
                     <div class="Good__Book-readnow">
-                        <a>Đọc Ngay</a>
+                        <a href="/details?id={{$sach['id']}}">Đọc Ngay</a>
                     </div>
                 </div>
             </div>
