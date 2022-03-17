@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,10 +61,11 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuAccount">
                     <li><a class="dropdown-item" id="Item__Account" href="/profile">Thông Tin Tài Khoản</a></li>
 
+                    @if (isset(Session::get('UserLogin')['Role']))
                     @if (Session::get('UserLogin')['Role'] == true)
-                        <li><a class="dropdown-item" id="Item__Account" href="/admin">Admin</a></li>
+                    <li><a class="dropdown-item" id="Item__Account" href="/admin">Admin</a></li>
                     @endif
-
+                    @endif
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -138,7 +140,7 @@
         loadimg = function(event) {
             const anh = document.getElementById('Anh');
             anh.src = URL.createObjectURL(event.target.files[0]);
-        }          
+        }
     </script>
 </body>
 
