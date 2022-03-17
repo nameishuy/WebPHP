@@ -29,9 +29,9 @@ Route::view('signin', 'signin');
 Route::get('/signin', function () {
 
     if (session()->has('UserLogin')) {
-        if(isset($data['id'])){
+        if (isset($data['id'])) {
             return view('home');
-        }else return view('signin');
+        } else return view('signin');
     } else {
         return view('signin');
     }
@@ -67,8 +67,8 @@ Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 Route::view('/products', 'products');
 Route::get('/products', [WebController::class, 'product'])->name('product');
 
-Route::view('/cart','cart');
-Route::get('/cart', [WebController::class,'cart']);
+Route::view('/cart', 'cart');
+Route::get('/cart', [WebController::class, 'cart']);
 
 
 Route::view('/details', 'details');

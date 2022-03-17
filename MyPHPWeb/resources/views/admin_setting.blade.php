@@ -1,39 +1,39 @@
 @extends('admin')
 
 @section('admincontent')
-<div class="Admin__Setting-Container">
-    <div class="Admin__Setting-Banner">
-        <h1>Banner</h1>
-        <div class="Setting__Banner">
-            <div class="Setting__Banner-Feature">
-                <div>Banner 1</div>
-                <input type="file" name="Banner1" id="">
+    <?php if (isset($mess)) : ?>
+    <h1>{{ $mess }}</h1>
+    <?php else : ?>
+    <h1>{{ Session::get('mess') }}</h1>
+    <?php endif; ?>
+    <div class="Admin__Setting-Container">
+        <div class="Admin__Setting-Banner">
+            <h1>Banner</h1>
+            <div class="Setting__Banner">
+                <div class="Setting__Banner-Feature">
+                    <div>Banner 1</div>
+                    <input type="file" name="Banner1" id="" onchange="loadFile(event)" accept="image/*">
+                </div>
+                <img id="banner1" src="#" alt="banner1">
             </div>
-            <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="">
-            <div class="Setting__Banner-Feature-Btn">
+            <div class="Setting__Banner">
+                <div class="Setting__Banner-Feature">
+                    <div>Banner 2</div>
+                    <input type="file" name="Banner2" id="" onchange="loadFile2(event)">
+                </div>
+                <img id="banner2" src="#" alt="">
+            </div>
+            <div class="Setting__Banner">
+                <div class="Setting__Banner-Feature">
+                    <div>Banner 3</div>
+                    <input type="file" name="Banner3" id="" onchange="loadFile3(event)">
+                </div>
+                <img id="banner3" src="#" alt="">
+            </div>
+            <div onclick="UpdateBanner()" class="Setting__Banner-Feature-Btn">
                 Cập Nhật
             </div>
         </div>
-        <div class="Setting__Banner">
-            <div class="Setting__Banner-Feature">
-                <div>Banner 2</div>
-                <input type="file" name="Banner2" id="">
-            </div>
-            <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="">
-            <div class="Setting__Banner-Feature-Btn">
-                Cập Nhật
-            </div>
-        </div>
-        <div class="Setting__Banner">
-            <div class="Setting__Banner-Feature">
-                <div>Banner 3</div>
-                <input type="file" name="Banner3" id="">
-            </div>
-            <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="">
-        </div>
-        <div class="Setting__Banner-Feature-Btn">
-            Cập Nhật
-        </div>
+
     </div>
-</div>
 @endsection

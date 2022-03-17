@@ -8,7 +8,8 @@
     <title>admin</title>
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/body_admin.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -17,17 +18,21 @@
             <a class="navbar-brand d-flex align-items-center me-md-auto ms-md-5" href="/">
                 <ion-icon name="book-outline"></ion-icon> MBook
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav text-center p-md-3 mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/admin">Trang Chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/account-manager">Tài Khoản</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page"
+                            href="/admin/account-manager">Tài Khoản</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/bill-pay">Hóa Đơn</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/storage-products">Hàng Tồn Kho</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/storage-products">Hàng Tồn Kho</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="/admin/setting">Thiết Lập</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/add-newbook">Thêm Sách Mới</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/add-newbook">Thêm Sách Mới</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -47,13 +52,17 @@
                         <span style="font-weight: bold;">Mã Đơn Hàng: </span><span id="Ma"></span>
                     </span>
                     <span>
-                        <span style="font-weight: bold;">Ngày Đặt: </span><span style="font-weight: bold;" id="Date"></span>
+                        <span style="font-weight: bold;">Ngày Đặt: </span><span style="font-weight: bold;"
+                            id="Date"></span>
                     </span>
                     <span>
-                        <span style="font-weight: bold;">Tổng Tiền: </span><span style="color: red; font-weight: 600;" id="Money"></span>đ
+                        <span style="font-weight: bold;">Tổng Tiền: </span><span style="color: red; font-weight: 600;"
+                            id="Money"></span>đ
                     </span>
                     <span>
-                        <span style="font-weight: bold;">Tình Trạng: </span><span style="color: red; font-weight: 600;" id="TinhTrangFalse"></span><span style="color: green; font-weight: 600;" id="TinhTrangTrue"></span>
+                        <span style="font-weight: bold;">Tình Trạng: </span><span style="color: red; font-weight: 600;"
+                            id="TinhTrangFalse"></span><span style="color: green; font-weight: 600;"
+                            id="TinhTrangTrue"></span>
                     </span>
                 </div>
             </div>
@@ -94,7 +103,11 @@
                                 maximumSignificantDigits: 6
                             }).format(data.Dongia + data.Soluong)
 
-                            document.getElementById("DialogDetailsPay").innerHTML += '  <div class="DialogDetailsPay__infoPay-Details"><div class="DialogDetailsPay__Image"><img id="Anh" src="' + data.Anhbia + '" alt="#"></div><div id="Tensach" class="DialogDetailsPay__BookName">' + data.Tensach + '</div><div id="Soluong" class="DialogDetailsPay__Count">' + data.Soluong + '</div><div id="Dongia" class="DialogDetailsPay__Price">' + money + '</div></div>';
+                            document.getElementById("DialogDetailsPay").innerHTML +=
+                                '  <div class="DialogDetailsPay__infoPay-Details"><div class="DialogDetailsPay__Image"><img id="Anh" src="' +
+                                data.Anhbia + '" alt="#"></div><div id="Tensach" class="DialogDetailsPay__BookName">' + data
+                                .Tensach + '</div><div id="Soluong" class="DialogDetailsPay__Count">' + data.Soluong +
+                                '</div><div id="Dongia" class="DialogDetailsPay__Price">' + money + '</div></div>';
 
                         }
                     }).catch(err => {
@@ -144,12 +157,17 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <script>
         let Role
         let userid
         let idbook
         let ListCTBill
+        let Anh1 = '';
+        let Anh2 = '';
+        let Anh3 = '';
         let SolnTon = 0
         let Product__Price = 0
 
@@ -190,7 +208,7 @@
                 this.userid
                 this.delteleData("khachhangbyid/" + this.userid).then((result) => {
                     alert("Xóa Thành Công")
-                    window.location.href = "{{ route('account-manager')}}"
+                    window.location.href = "{{ route('account-manager') }}"
                 }).catch((err) => {
                     alert(err)
                 });
@@ -201,7 +219,41 @@
 
 
 
+        //load Pic Banner
+        var loadFile = function(event) {
+            var image = document.getElementById('banner1');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            if (event.target.files) {
+                const reader = new FileReader()
+                reader.readAsDataURL(event.target.files[0])
+                reader.onload = (e) => {
+                    this.Anh1 = e.target?.result
+                }
+            }
+        }
+        var loadFile2 = function(event) {
+            var image = document.getElementById('banner2');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            if (event.target.files) {
+                const reader = new FileReader()
+                reader.readAsDataURL(event.target.files[0])
+                reader.onload = (e) => {
+                    this.Anh2 = e.target?.result
 
+                }
+            }
+        }
+        var loadFile3 = function(event) {
+            var image = document.getElementById('banner3');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            if (event.target.files) {
+                const reader = new FileReader()
+                reader.readAsDataURL(event.target.files[0])
+                reader.onload = (e) => {
+                    this.Anh3 = e.target?.result
+                }
+            }
+        }
 
         async function getData(url = '') {
             let BookingApi = "https://bookingapiiiii.herokuapp.com/";
@@ -215,6 +267,44 @@
             });
             return response.json();
         }
+
+        function UpdateBanner() {
+
+            let check = []
+            check.push(!(this.Anh1 == ''));
+            check.push(!(this.Anh2 == ''));
+            check.push(!(this.Anh3 == ''));
+            check.push(!(typeof this.Anh1 == "undefined"));
+            check.push(!(typeof this.Anh2 == "undefined"));
+            check.push(!(typeof this.Anh3 == "undefined"));
+
+            console.log(check)
+            let a1 = this.Anh1
+            let a2 = this.Anh2
+            let a3 = this.Anh3
+            if (check.every(va => va === true)) {
+                let bodyy = {
+                    Anh1: a1,
+                    Anh2: a2,
+                    Anh3: a3
+                }
+                console.log(typeof a1)
+                this.postdatabanner(bodyy).then(result => {
+                    alert(result);
+                    console.log(result)
+                })
+            }
+        }
+
+        async function postdatabanner(bodyy = '') {
+            let BookingApi = "https://bookingapiiiii.herokuapp.com/Banner";
+            const response = await fetch(BookingApi, {
+                method: 'PUT',
+                body: bodyy,
+            });
+            return response.json();
+        }
+
         async function delteleData(url = '') {
             let BookingApi = "https://bookingapiiiii.herokuapp.com/";
             console.log(BookingApi + url)
