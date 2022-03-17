@@ -1,6 +1,8 @@
 @extends('layout')
 
+
 @section('content')
+
     <div class="Cart__Container">
         <h3>GIỎ HÀNG</h3>
         <div class="Cart__Body">

@@ -68,25 +68,7 @@ Route::view('/products', 'products');
 Route::get('/products', [WebController::class, 'product'])->name('product');
 
 Route::view('/cart','cart');
-Route::get('/cart', function(){
-    if (session()->has("idbookforcart")) {
-        session()->put("idbookforcart", $_GET['id']);
-
-    } else {
-        $arr = array($_GET['id']);
-        session()->put("idbookforcart", $arr);
-    }
-    dd(session()->get("idbookforcart"));
-    if (session()->has('UserLogin')) {
-        
-        if (isset(session()->get('UserLogin')['id'])) {
-            $id = session()->get('UserLogin')['id'];
-            $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
-            
-            return view('cart', ['data' => $data]);
-        } else return view('cart', ['data']);
-    }else return view('cart', ['data']);
-});
+Route::get('/cart', [WebController::class,'cart']);
 
 
 Route::view('/details', 'details');

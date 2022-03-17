@@ -17,12 +17,11 @@
         .Book__image{
             width: 340px;
             height: 400px;
-            margin-right: 50px;
-            overflow: hidden;
-            box-shadow: 0 0 5px 0 rgba(145, 141, 141, 0.562);
+            display: flex;
+            justify-content: center;
         }
             .Book__image img{
-                width: 100%;
+                width: 80%;
                 height: 100%;
             }
     .Book__info{
@@ -81,10 +80,13 @@
             height: 40px;
             cursor: pointer;
             transition: .5s;
+            text-decoration: none;
         }
             .Book__info-btnCart:hover{
                 box-shadow: 0 0 10px 0 red;
                 background-color: red;
+                color: white;
+                text-decoration: none;
             }
     .Book__info-About{
         margin: 20px 0 20px 0;
