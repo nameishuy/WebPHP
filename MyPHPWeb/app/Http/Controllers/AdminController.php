@@ -23,6 +23,32 @@ class AdminController extends Controller
     {
         if (isset($req->session()->get("UserLogin")["Role"])) {
             if ($req->session()->get("UserLogin")["Role"] == true) {
+                $url = "https://bookingapiiiii.herokuapp.com/";
+                //Check POST For Add New Author, New Category, New Publishing Company:
+                        // 1. Add New Author
+                        if( isset($_POST["BtnAddAuthor"])){
+                                $resAuthor = json_decode(Http::post($url . 'tacgia',[
+                                    'TenTG' => $_POST['inputAuthorName'],
+                                    'Diachi' => $_POST['inputAuthorAddr'],
+                                    'Tieusu' => $_POST['inputAuthorHist'],
+                                    'Dienthoai' => $_POST['inputAuthorPhone'],
+                                ]));
+                        }
+
+                        if(isset($_POST["BtnAddCategory"])){
+                            $resAuthor = json_decode(Http::post($url . 'chude',[
+                                'TenChuDe' => $_POST['inputCategory']
+                            ]));
+                        }
+
+                        if( isset($_POST["BtnAddNXB"])){
+                            $resAuthor = json_decode(Http::post($url . 'nhaxuatban',[
+                                'TenNXB' => $_POST['inputNXB'],
+                                'Diachi' => $_POST['inputAddress'],
+                                'DienThoai' => $_POST['inputPhone']
+                            ]));
+                    }
+
                 //             $image1 = base64_encode(file_get_contents($req->file('Banner1')->path()));
                 //             $image1_base64 = 'data:image/jpeg;base64,' . $image1;
 

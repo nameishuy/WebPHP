@@ -83,6 +83,9 @@ Route::prefix('admin')->group(function () {
     Route::get('account-manager', [AdminController::class, 'AdminAccount'])->name('account-manager');
     Route::get('bill-pay', [AdminController::class, 'AdminBill']);
     Route::get('storage-products', [AdminController::class, 'AdminStorage']);
+    
     Route::get('setting', [AdminController::class, 'AdminSetting']);
+    Route::post('setting', [AdminController::class,'AdminSetting']);
+
     Route::get('add-newbook', [AdminController::class, 'AdminAddNewBook']);
 });

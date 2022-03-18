@@ -29,7 +29,7 @@
                             <span>Bạn hiện chưa chọn sách nào</span>
                         </div>
                         ";
-                }
+                }else{
                 ?>
                 <?php 
                 foreach($listCart as $item){
@@ -67,7 +67,7 @@
                     </div>
 
                 </div>
-                <?php } ?>
+                <?php } } ?>
                 <div class="Cart__Products-Footer">
                     Xóa Tất Cả
                 </div>
