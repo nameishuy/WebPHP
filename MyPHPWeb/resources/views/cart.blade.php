@@ -20,7 +20,7 @@
                 <?php
                 use App\Http\Controllers\WebController;
                 
-                if (WebController::ifEmptyCart()) {
+                if ($listCart == null) {
                     echo "
                         <div class='Cart__Products-Empty'>
                             <div class='Cart__Products-Empty-image'>
@@ -31,19 +31,20 @@
                         ";
                 }
                 ?>
+                <?php 
+                foreach($listCart as $item){
+                ?>
                 <div class="Cart__Products-Body">
                     <div class="Cart__Products-item">
                         <div class="checkbox__product">
                             <input type="checkbox" name="" class="checkbox" id="checkbox__product">
                         </div>
                         <div class="imgbook">
-                            <img src="https://cdn0.fahasa.com/media/catalog/product/cache/1/image/400x400/9df78eab33525d08d6e5fb8d27136e95/b/_/b_-s_ch-ctst_1_3.jpg"
+                            <img src="<?php echo $item['image'] ?>"
                                 class="Img__Book" alt="">
                         </div>
                         <a class="Cart__Products-BookName">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa a adipisci quia debitis sint
-                            expedita quisquam, assumenda asperiores dolorem, id ratione explicabo qui earum non aliquam
-                            maxime, corrupti illum!
+                            <?php echo $item['name'] ?>
                         </a>
                         <div class="Cart__Products-group-product-info">
 
@@ -53,19 +54,20 @@
                                         <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-remove.svg"
                                             alt="remove-icon" width="20" height="20">
                                     </button>
-                                    <input id="inputNum" type="text" value="1" placeholder="1" class="input">
+                                    <input id="inputNum" type="text" value="<?php echo $item['count'] ?>" placeholder="<?php echo $item['count'] ?>" class="input">
                                     <button onclick="moreProducts()">
                                         <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-add.svg"
                                             alt="add-icon" width="20" height="20">
                                     </button>
                                 </div>
                             </div>
-                            <span class="Cart__Products-group-product-info-price">186.000đ</span>
+                            <span class="Cart__Products-group-product-info-price"><?php echo $item['price'] ?>đ</span>
                             <ion-icon class="trash" id="btn-del" name="trash-outline"></ion-icon>
                         </div>
-
                     </div>
+
                 </div>
+                <?php } ?>
                 <div class="Cart__Products-Footer">
                     Xóa Tất Cả
                 </div>

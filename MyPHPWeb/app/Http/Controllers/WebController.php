@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Session;
 
 class WebController extends Controller
 {
@@ -73,7 +71,7 @@ class WebController extends Controller
         return $book;
     }
 
-    public static function ifEmptyCart()
+    public static function ifEmptyCart(Request $req)
     {
         return true;
     }
@@ -92,28 +90,49 @@ class WebController extends Controller
     }
 
     function cart(Request $req){
-        //Session::remove("idbookforcart");
-        if(isset($_GET['id'])){
-            if (session()->get("idbookforcart") != null) {
-                $arr = session()->get("idbookforcart");
-                array_push($arr,$_GET['id']);
-                session()->push("idbookforcart",$arr);
+        //$req->session()->remove("idbookforcart");
         
+        if(isset($_GET['id'])){
+            $itemCart = [
+                "id" => $_GET['id'],
+                "name" => $_GET['name'],
+                "image" => $_GET['image']. '&token=' . $_GET['token'],
+                "price" => $_GET['price'],
+                "count" => 1
+            ];
+            if ($req->session()->get("idbookforcart") != null) {
+                $arr = $req->session()->get("idbookforcart");
+                $length = 1;
+                foreach($arr as $item){
+
+                    if($item['id'] == $itemCart['id']){
+                        $item['count'] += 1;
+                        
+
+                        $req->session()->put("idbookforcart",$arr);
+                        break;
+                    }
+                    if($item['id'] != $itemCart['id'] && $length == count($arr)){
+                        array_push($arr,$itemCart);
+                        $req->session()->put("idbookforcart",$arr);  
+                    }
+                    $length++;
+                }
+   
             } else {
-                session()->put("idbookforcart",[]);
-                $arr = array($_GET['id']);
-                session()->push("idbookforcart",$arr);
+                $arr = array($itemCart);
+                $req->session()->put("idbookforcart",$arr);
             }
         }
-        //dd(session()->get("idbookforcart"));
         if (session()->has('UserLogin')) {
             
             if (isset(session()->get('UserLogin')['id'])) {
                 $id = session()->get('UserLogin')['id'];
                 $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
                 
-                return view('cart', ['data' => $data]);
-            } else return view('cart', ['data']);
-        }else return view('cart', ['data']);
+
+                return view('cart', ['data' => $data, 'listCart' => $req->session()->get("idbookforcart")]);
+            } else return view('cart', ['data','listCart' => $req->session()->get("idbookforcart")]);
+        }else return view('cart', ['data','listCart' => $req->session()->get("idbookforcart")]);
     }
 }
