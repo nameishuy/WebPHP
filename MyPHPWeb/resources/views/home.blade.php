@@ -10,13 +10,13 @@
     </div>
     <div class="carousel-inner Banner__Container">
         <div class="carousel-item Banner active">
-            <img src="https://nxbphunu.com.vn/wp-content/uploads/2020/02/banner-hoi-sach.jpg" class="" alt="...">
+            <img src="{{$listBanner['Anh1']}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="https://amovietnam.vn/wp-content/uploads/2016/02/banner-doc-sach-vi-tuong-lai-amo-vietnam-2018.jpg" class="" alt="...">
+            <img src="{{$listBanner['Anh2']}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="https://pvm.com.vn/wp-content/uploads/2017/11/banner-sach.jpg" class="" alt="...">
+            <img src="{{$listBanner['Anh2']}}" class="" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">

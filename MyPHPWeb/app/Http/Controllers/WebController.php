@@ -11,12 +11,13 @@ class WebController extends Controller
     function index()
     {
         $url = "https://bookingapiiiii.herokuapp.com/";
-
+        $listBanner = json_decode(Http::get($url . 'Banner'), true);
         $book1 = json_decode(Http::get($url . 'sachbanchayfirst'), true);
         $book2 = json_decode(Http::get($url . 'sachbanchaysecond'), true);
         $sachhay = json_decode(Http::get($url . 'sachtimestamps'), true);
+        
 
-        return view('home', ['book1' => $book1, 'book2' => $book2, 'sachhay' => $sachhay, 'active' => 1]);
+        return view('home', ['book1' => $book1, 'book2' => $book2, 'sachhay' => $sachhay, 'active' => 1, 'listBanner' => $listBanner]);
     }
 
 
