@@ -47,7 +47,6 @@
                             <?php echo $item['name'] ?>
                         </a>
                         <div class="Cart__Products-group-product-info">
-
                             <div class="Cart__Products-Count">
                                 <div class="Cart__Products-Button">
                                     <button onclick="lessProducts()">
@@ -62,15 +61,15 @@
                                 </div>
                             </div>
                             <span class="Cart__Products-group-product-info-price"><?php echo $item['price'] ?>đ</span>
-                            <ion-icon class="trash" id="btn-del" name="trash-outline"></ion-icon>
+                            <a class="btnDeleteItem" href="/cart?deleteid=<?php echo $item['id'] ?>"><ion-icon id="btn-del" name="trash-outline"></ion-icon></a>
                         </div>
                     </div>
 
                 </div>
                 <?php } } ?>
-                <div class="Cart__Products-Footer">
+                <a class="Cart__Products-Footer" href="/cart?deleteAll" id="deleteAll">
                     Xóa Tất Cả
-                </div>
+                </a>
             </div>
             <div class="Cart__Bill">
                 <form action="" method="get">
@@ -104,11 +103,20 @@
                     </div>
                     <div class="Cart__Bill-Pay">
                         <div class="Cart__Bill-Pay-Price">
-                            Tổng <span class="cart-total-price"></span>
+                            Tổng <span class="cart-total-price">
+                                <?php 
+                                    $totalPrice=0;
+                                    foreach($listCart as $item){
+                                        $totalPrice += $item['price'];
+                                    }
+                                    echo number_format($totalPrice, 3, '.', '') . "đ";
+                                ?>
+                            </span>
                         </div>
-                        <div class="Cart__Bill-Pay-BtnPay">
+                        <a class="Cart__Bill-Pay-BtnPay" href="/cart?pay">
                             Thanh Toán
-                        </div>
+                        </a>
+                    </form>
                     </div>
                 </form>
             </div>

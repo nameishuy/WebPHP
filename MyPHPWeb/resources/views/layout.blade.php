@@ -53,7 +53,14 @@
             </div>
             <a class="Cart" href="/cart">
                 <ion-icon name="cart-outline"></ion-icon>
-                <span class="countCart">0</span>
+                <span class="countCart">
+                    <?php 
+                        $list = session()->get("idbookforcart");
+                        $num = count($list);
+                        if($num != 0) echo $num;
+                        else echo "0";
+                    ?>
+                </span>
             </a>
             @if (isset(Session::get('UserLogin')['HoTen']))
                 <div class="dropdown " id="Account_Info">

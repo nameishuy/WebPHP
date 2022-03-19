@@ -17,10 +17,10 @@ function  moreProducts() {
 
 function  onCheckAll(){
     let checkAll =  document.getElementById("checkbox__all-product");
-    let checkItems = document.querySelectorAll("#checkbox__product");
+    let btnDeleteAll = document.getElementById("deleteAll");
     if(checkAll && checkAll.checked){
-    checkItems.forEach(item => item.checked = true);
+        btnDeleteAll.style.display = "flex";
     }else{
-    checkItems.forEach(item => item.checked = false);
+        btnDeleteAll.style.display = "none";
     }
 }

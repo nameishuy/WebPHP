@@ -125,6 +125,41 @@ class WebController extends Controller
                 $req->session()->put("idbookforcart",$arr);
             }
         }
+        if(isset($_GET['deleteid'])){
+            $objNeed = [];
+            $arr = $req->session()->get("idbookforcart");
+            foreach($arr as $item){
+                if($item['id'] == $_GET['deleteid'])
+                {
+                    $objNeed = $item;
+                    break;
+                }
+            }
+            if(($key = array_search($objNeed,$arr)) !== false){
+                unset($arr[$key]);
+            }
+
+            $req->session()->put("idbookforcart",$arr);
+        }
+
+        if(isset($_GET['deleteAll'])){
+            $req->session()->put("idbookforcart",[]);
+        }
+        if(isset($_GET['pay'])){
+            if($req->session()->get("idbookforcart") == null){
+
+            }else{
+                if(session()->has('UserLogin')){
+                    if(isset(session()->get('UserLogin')['id'])){
+                        if(isset($_POST['inputNum'])){
+                            dd("inputNum");
+                        }
+                    }
+                }else{
+                    // do nothing
+                }
+            }
+        }
         if (session()->has('UserLogin')) {
             
             if (isset(session()->get('UserLogin')['id'])) {
