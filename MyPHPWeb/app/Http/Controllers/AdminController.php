@@ -48,27 +48,6 @@ class AdminController extends Controller
                                 'DienThoai' => $_POST['inputPhone']
                             ]));
                     }
-
-                //             $image1 = base64_encode(file_get_contents($req->file('Banner1')->path()));
-                //             $image1_base64 = 'data:image/jpeg;base64,' . $image1;
-
-                //             $image2 = base64_encode(file_get_contents($req->file('Banner2')->path()));
-                //             $image2_base64 = 'data:image/jpeg;base64,' . $image2;
-
-                //             $image3 = base64_encode(file_get_contents($req->file('Banner3')->path()));
-                //             $image3_base64 = 'data:image/jpeg;base64,' . $image3;
-
-                //             if (isset($image1_base64) && isset($image2_base64) && isset($image3_base64)) {
-                //                 $data = Http::put('https://bookingapiiiii.herokuapp.com/Banner', [
-                //                     "anh1" => $image2_base64,
-                //                     "anh2" => $image1_base64,
-                //                     "anh3" => $image3_base64
-                //                 ]);
-
-                //                 return  view('admin_setting', ['data' => $data, 'mess', 'Cập Nhật Thành Công!']);
-                //             }else {
-                //                 return back()->with('mess', 'Cập Nhật Không Thành Công!');
-                //             }
                 return  view('admin_setting');
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
