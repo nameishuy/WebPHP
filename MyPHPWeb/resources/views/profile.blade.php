@@ -115,13 +115,13 @@ $ID = Session::get('UserLogin')['id']; ?>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Mật Khẩu Mới</label>
-                                    <input type="password" id="newpass" class="form-control" required>
+                                    <input type="password" id="newpass" class="form-control" minlength="6" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Xác Nhận Mật Khẩu</label>
-                                    <input type="password" id="compass" class="form-control" required>
+                                    <input type="password" id="compass" class="form-control" minlength="6" required>
                                 </div>
                             </div>
                         </div>
