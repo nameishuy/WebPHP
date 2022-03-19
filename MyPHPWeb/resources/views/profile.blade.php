@@ -54,7 +54,7 @@ $ID = Session::get('UserLogin')['id']; ?>
                                 <div class="form-group">
                                     <label>Email</label>
                                     @if(isset($data['Email']))
-                                    <input type="text" class="form-control" id="mail" value="{{$data['Email']}}" required>
+                                    <input type="email" class="form-control" id="mail" value="{{$data['Email']}}" required>
                                     @else
                                     <input type="text" class="form-control" id="mail" required>
                                     @endif
@@ -72,9 +72,11 @@ $ID = Session::get('UserLogin')['id']; ?>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Số Điện Thoại</label>
+                                    <label>Số Điện Thoại (nhập đủ 10 số) </label>
                                     @if(isset($data['DienthoaiKH']))
-                                    <input type="text" class="form-control" id="sdt" value="{{$data['DienthoaiKH']}}" required>
+                                    <input type="tel" class="form-control" id="sdt" value="{{$data['DienthoaiKH']}}"
+                                    pattern="[0-9]{10}"
+                                    required>
                                     @else
                                     <input type="text" class="form-control" id="sdt" required>
                                     @endif
