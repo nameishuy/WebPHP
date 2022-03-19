@@ -141,14 +141,17 @@
             <div class="DialogChangeDetailsProduct__CloseBtn" onclick="closeDialogChangeDetails()">
                 <ion-icon name="close-circle-outline"></ion-icon>
             </div>
-            <div class="DialogChangeDetailsProduct__changeDetails">
-                <h1>Cập Nhật</h1>
-                Thêm số lượng tồn: <input type="text" name="storageNum" id="">
-                Giá: <input type="text" name="storagePrice" id="">
-            </div>
-            <div class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES">
-                Cập Nhật
-            </div>
+            <form id="UpdateBook">
+                <div class="DialogChangeDetailsProduct__changeDetails">
+                    <h1>Cập Nhật</h1>
+                    Thêm số lượng tồn: <input type="text" required name="storageNum" id="storageNum">
+                    Giá: <input type="text" name="storagePrice" required id="storagePrice">
+                </div>
+                <button type="submit"
+                    class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES">
+                    Cập Nhật
+                </button>
+            </form>
         </div>
     </div>
     <div class="Body__Container">
@@ -193,13 +196,42 @@
             let dialog = document.getElementById("DialogChangeDetailsProduct__Container");
             dialog.style.display = "none";
         }
+        let IDBOOK;
 
-        function showDialogChangeDetailsProduct() {
+        function showDialogChangeDetailsProduct(id, gia) {
             let dialog = document.getElementById("DialogChangeDetailsProduct__Container");
             dialog.style.display = "block";
+            IDBOOK = id
         }
 
+        const FormUpdate = document.getElementById("UpdateBook");
+        FormUpdate.addEventListener("submit", submitFormprofile);
 
+        function submitFormprofile(e) {
+            e.preventDefault();
+            let dongia = document.getElementById("storagePrice").value;
+            let ton = document.getElementById("storageNum").value;
+            let check = []
+            check.push(dongia > 0);
+            check.push(ton > 0);
+            if (check.every(va => va === true)) {
+                let body = "{\"id\":\"" + IDBOOK + "\",\"Giaban\":" + dongia + ",\"Soluongton\":" + ton + "}"
+                put('sach', body).then(res => {
+                    if (res._id != null) {
+                        alert("Cập Nhật Thành Công")
+                        window.location.href = "/admin/storage-products"
+                    } else {
+                        alert("Đã Xảy Ra Lỗi")
+                    }
+                }).catch(
+                    err => {
+                        alert(err)
+                    }
+                )
+            } else {
+                alert("Vui Lòng Nhập Lại")
+            }
+        }
 
         function DeleteAccount() {
             if (this.Role) {
@@ -214,7 +246,7 @@
                 });
             }
 
-        }    
+        }
 
         async function getData(url = '') {
             let BookingApi = "https://bookingapiiiii.herokuapp.com/";
@@ -227,7 +259,19 @@
                 },
             });
             return response.json();
-        }      
+        }
+
+        async function put(url = '', bodyy) {
+            let BookingApi = "https://bookingapiiiii.herokuapp.com/";
+            const response = await fetch(BookingApi + url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: bodyy
+            });
+            return response.json();
+        }
 
         async function delteleData(url = '') {
             let BookingApi = "https://bookingapiiiii.herokuapp.com/";
