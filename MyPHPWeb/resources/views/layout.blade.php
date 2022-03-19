@@ -54,11 +54,17 @@
             <a class="Cart" href="/cart">
                 <ion-icon name="cart-outline"></ion-icon>
                 <span class="countCart">
-                    <?php 
-                        $list = session()->get("idbookforcart");
+                    <?php
+                    $list = session()->get('idbookforcart');
+                    if ($list == null || $list == 0) {
+                        echo '0';
+                    } else {
                         $num = count($list);
-                        if($num != 0) echo $num;
-                        else echo "0";
+                        if ($num != 0) {
+                            echo $num;
+                        }
+                    }
+                    
                     ?>
                 </span>
             </a>

@@ -69,6 +69,9 @@ Route::get('/products', [WebController::class, 'product'])->name('product');
 
 Route::view('/cart', 'cart');
 Route::get('/cart', [WebController::class, 'cart']);
+Route::get('plusCountItem', [WebController::class, 'plusCountItem']);
+Route::get('minusCountItem', [WebController::class, 'minusCountItem']);
+
 
 
 Route::view('/details', 'details');
@@ -83,9 +86,9 @@ Route::prefix('admin')->group(function () {
     Route::get('account-manager', [AdminController::class, 'AdminAccount'])->name('account-manager');
     Route::get('bill-pay', [AdminController::class, 'AdminBill']);
     Route::get('storage-products', [AdminController::class, 'AdminStorage']);
-    
+
     Route::get('setting', [AdminController::class, 'AdminSetting']);
-    Route::post('setting', [AdminController::class,'AdminSetting']);
+    Route::post('setting', [AdminController::class, 'AdminSetting']);
 
     Route::get('add-newbook', [AdminController::class, 'AdminAddNewBook']);
 });
