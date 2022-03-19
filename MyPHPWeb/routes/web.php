@@ -50,13 +50,12 @@ Route::view('signup', 'signup');
 
 
 
-Route::view('profile', 'profile');
 Route::get('/profile', function () {
     if (session()->has('UserLogin')) {
         if (isset(session()->get('UserLogin')['id'])) {
             $id = session()->get('UserLogin')['id'];
             $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
-
+            session()->put('UserLogin', $data);
             return view('profile', ['data' => $data]);
         }
     }
