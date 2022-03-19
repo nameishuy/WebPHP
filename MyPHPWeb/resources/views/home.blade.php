@@ -16,7 +16,7 @@
             <img src="{{$listBanner['Anh2']}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="{{$listBanner['Anh2']}}" class="" alt="...">
+            <img src="{{$listBanner['Anh3']}}" class="" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">

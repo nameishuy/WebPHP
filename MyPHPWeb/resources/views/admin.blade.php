@@ -214,46 +214,7 @@
                 });
             }
 
-        }
-
-
-
-
-        //load Pic Banner
-        var loadFile = function(event) {
-            var image = document.getElementById('banner1');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            if (event.target.files) {
-                const reader = new FileReader()
-                reader.readAsDataURL(event.target.files[0])
-                reader.onload = (e) => {
-                    this.Anh1 = e.target?.result
-                }
-            }
-        }
-        var loadFile2 = function(event) {
-            var image = document.getElementById('banner2');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            if (event.target.files) {
-                const reader = new FileReader()
-                reader.readAsDataURL(event.target.files[0])
-                reader.onload = (e) => {
-                    this.Anh2 = e.target?.result
-
-                }
-            }
-        }
-        var loadFile3 = function(event) {
-            var image = document.getElementById('banner3');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            if (event.target.files) {
-                const reader = new FileReader()
-                reader.readAsDataURL(event.target.files[0])
-                reader.onload = (e) => {
-                    this.Anh3 = e.target?.result
-                }
-            }
-        }
+        }    
 
         async function getData(url = '') {
             let BookingApi = "https://bookingapiiiii.herokuapp.com/";
@@ -266,44 +227,7 @@
                 },
             });
             return response.json();
-        }
-
-        function UpdateBanner() {
-
-            let check = []
-            check.push(!(this.Anh1 == ''));
-            check.push(!(this.Anh2 == ''));
-            check.push(!(this.Anh3 == ''));
-            check.push(!(typeof this.Anh1 == "undefined"));
-            check.push(!(typeof this.Anh2 == "undefined"));
-            check.push(!(typeof this.Anh3 == "undefined"));
-
-            console.log(check)
-            let a1 = this.Anh1
-            let a2 = this.Anh2
-            let a3 = this.Anh3
-            if (check.every(va => va === true)) {
-                let bodyy = {
-                    Anh1: a1,
-                    Anh2: a2,
-                    Anh3: a3
-                }
-                console.log(typeof a1)
-                this.postdatabanner(bodyy).then(result => {
-                    alert(result);
-                    console.log(result)
-                })
-            }
-        }
-
-        async function postdatabanner(bodyy = '') {
-            let BookingApi = "https://bookingapiiiii.herokuapp.com/Banner";
-            const response = await fetch(BookingApi, {
-                method: 'PUT',
-                body: bodyy,
-            });
-            return response.json();
-        }
+        }      
 
         async function delteleData(url = '') {
             let BookingApi = "https://bookingapiiiii.herokuapp.com/";
