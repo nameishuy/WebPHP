@@ -197,11 +197,18 @@
             dialog.style.display = "none";
         }
         let IDBOOK;
+        let GIA;
+        let SLTON;
+        let Bm;
 
-        function showDialogChangeDetailsProduct(id, gia) {
+        function showDialogChangeDetailsProduct(id, gia, slton) {
             let dialog = document.getElementById("DialogChangeDetailsProduct__Container");
             dialog.style.display = "block";
             IDBOOK = id
+            GIA = gia
+            SLTON = slton
+            document.getElementById("storagePrice").value = gia;
+            document.getElementById("storageNum").value = slton;
         }
 
         const FormUpdate = document.getElementById("UpdateBook");
@@ -215,8 +222,17 @@
             check.push(dongia > 0);
             check.push(ton > 0);
             if (check.every(va => va === true)) {
-                let body = "{\"id\":\"" + IDBOOK + "\",\"Giaban\":" + dongia + ",\"Soluongton\":" + ton + "}"
-                put('sach', body).then(res => {
+                if (dongia == GIA) {
+                    let body = "{\"id\":\"" + IDBOOK + "\",\"Soluongton\":" + ton + "}"
+                    Bm = body
+                } else if (ton == SLTON) {
+                    let body = "{\"id\":\"" + IDBOOK + "\",\"Giaban\":" + dongia + "}"
+                    Bm = body
+                } else {
+                    let body = "{\"id\":\"" + IDBOOK + "\",\"Giaban\":" + dongia + ",\"Soluongton\":" + ton + "}"
+                    Bm = body
+                }
+                put('sach', Bm).then(res => {
                     if (res._id != null) {
                         alert("Cập Nhật Thành Công")
                         window.location.href = "/admin/storage-products"

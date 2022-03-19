@@ -24,7 +24,7 @@
 
             <div class="Bill__Setting">
                 <div class="Bill__Setting-details"
-                    onclick="showDialogChangeDetailsProduct('<?php echo $book['id']; ?>','<?php echo $book['Giaban']; ?>')">
+                    onclick="showDialogChangeDetailsProduct('<?php echo $book['id']; ?>','<?php echo $book['Giaban']; ?>',<?php echo $book['Soluongton']; ?>)">
                     Thay Đổi
                 </div>
             </div>
