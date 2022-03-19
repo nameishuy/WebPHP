@@ -38,8 +38,9 @@ Route::get('/signin', function () {
 });
 
 Route::get('/logout', function () {
-    if (session()->has('UserLogin')) {
+    if (session()->has('UserLogin') || session()->has('idbookforcart')) {
         session()->remove('UserLogin');
+        session()->remove("idbookforcart");
     }
     return  App::call('App\Http\Controllers\WebController@index');
 });

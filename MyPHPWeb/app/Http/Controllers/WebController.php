@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\App;
+use PhpParser\Node\Expr\Cast\Double;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -126,6 +127,7 @@ class WebController extends Controller
                 $req->session()->put("idbookforcart", $arr);
             }
         }
+
         if (isset($_GET['deleteid'])) {
             $objNeed = [];
             $arr = $req->session()->get("idbookforcart");
@@ -147,65 +149,64 @@ class WebController extends Controller
         }
 
         if (isset($_GET['pay'])) {
-            if ($req->session()->get("idbookforcart") != null) {
-                $dagiao = false;
-                $dathanhtoan = false;
-                $date = date('Y-m-d H:i:s');
-                $kh = session()->get('UserLogin')['id'];
-                $total = 0;
-                $masach = [];
-                $soluongcheck = [];
-                foreach (session()->get('idbookforcart') as $item) {
-                    array_push($masach, $item['id']);
-                    array_push($soluongcheck, $item['count']);
-                    $total += $item['price'] * $item['count'];
-                }
+            $UserLogin = session()->get('UserLogin');
+            if ($UserLogin != null) {
+                if (isset(session()->get('UserLogin')['id'])) {
+                    if ($req->session()->get("idbookforcart") != null) {
+                        $date = date('Y-m-d H:i:s');
+                        $kh = session()->get('UserLogin')['id'];
+                        $total = 0;
+                        $masach = [];
+                        $soluongcheck = [];
+                        foreach (session()->get('idbookforcart') as $item) {
+                            array_push($masach, $item['id']);
+                            array_push($soluongcheck, $item['count']);
+                            $total += $item['price'] * $item['count'];
+                        }
 
-                if (isset($kh) && isset($date) && $masach != [] && $soluongcheck != []) {
-                    $data = json_decode(Http::post('https://bookingapiiiii.herokuapp.com/DonHang', [
-                        "Dathanhtoan" => $dathanhtoan,
-                        "Tinhtranggiaohang" => $dagiao,
-                        "Ngaydat" => $date,
-                        "TongTien" =>  $total,
-                        "MaKH" =>  $kh,
-                        "MasachCheck" => $masach,
-                        "SoluongCheck" => $soluongcheck
-                    ]), true);
-                    if (isset($data['_id'])) {
-
-                        Http::post("");
-
-
-
-
-
-
-
-
-
-
-
-
-                        $req->session()->put("idbookforcart", []);
-
-                        return view('/cart', ['listCart' =>
-                        $req->session()->get("idbookforcart"), 'mess' => "Đặt hàng thành công nhá"]);
-                    } else {
-                        return view('/cart', ['listCart' => $req->session()->get("idbookforcart"), 'mess' => "Đặt hàng thất bại nhá"]);
-                    }
-                }
-            } else {
-                if (session()->has('UserLogin')) {
-                    if (isset(session()->get('UserLogin')['id'])) {
-                        if (isset($_POST['inputNum'])) {
-                            dd("inputNum");
+                        if (isset($kh) && isset($date) && $masach != [] && $soluongcheck != []) {
+                            $data = json_decode(Http::post('https://bookingapiiiii.herokuapp.com/DonHang', [
+                                "Dathanhtoan" => false,
+                                "Tinhtranggiaohang" => false,
+                                "Ngaydat" => $date,
+                                "TongTien" =>  $total,
+                                "MaKH" =>  $kh,
+                                "MasachCheck" => $masach,
+                                "SoluongCheck" => $soluongcheck
+                            ]), true);
+                            if (isset($data['_id'])) {
+                                foreach (session()->get('idbookforcart') as $item) {
+                                    $price = (float)$item['price'];
+                                    $response = json_decode(
+                                        Http::post('https://bookingapiiiii.herokuapp.com/CTDonHang', [
+                                            "MaDonHang" => $data['_id'],
+                                            "Masach" => $item['id'],
+                                            "Soluong" => $item['count'],
+                                            "Dongia" => $price
+                                        ]),
+                                        true
+                                    );
+                                }
+                                if (isset($response['MaDonHang'])) {
+                                    $req->session()->put("idbookforcart", []);
+                                    return view('/cart', ['listCart' =>
+                                    $req->session()->get("idbookforcart"), 'mess' => "Đặt hàng thành công nhá"]);
+                                } else {
+                                    return view('/cart', ['listCart' => $req->session()->get("idbookforcart"), 'mess' => $data['Messager'][0]]);
+                                }
+                            } else {
+                                return view('/cart', ['listCart' => $req->session()->get("idbookforcart"), 'mess' => $data['Messager'][0]]);
+                            }
                         }
                     }
                 } else {
-                    // do nothing
+                    return view('signin');
                 }
+            } else {
+                return view('signin');
             }
         }
+
         if (session()->has('UserLogin')) {
 
             if (isset(session()->get('UserLogin')['id'])) {
