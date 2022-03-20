@@ -33,24 +33,20 @@ function closeDialogChangeDetails() {
 }
 let IDBOOK;
 let GIA;
-let SLTON;
-let Bm;
 
-function showDialogChangeDetailsProduct(id, gia, slton) {
+function showDialogChangeDetailsProduct(id, gia) {
     let dialog = document.getElementById(
         "DialogChangeDetailsProduct__Container"
     );
     dialog.style.display = "block";
     IDBOOK = id;
     GIA = gia;
-    SLTON = slton;
     document.getElementById("storagePrice").value = gia;
-    document.getElementById("storageNum").value = slton;
 }
 
+//Update Storage
 const FormUpdate = document.getElementById("UpdateBook");
 FormUpdate.addEventListener("submit", submitFormprofile);
-
 function submitFormprofile(e) {
     e.preventDefault();
     let dongia = document.getElementById("storagePrice").value;
@@ -59,24 +55,15 @@ function submitFormprofile(e) {
     check.push(dongia > 0);
     check.push(ton > 0);
     if (check.every((va) => va === true)) {
-        if (dongia == GIA) {
-            let body = '{"id":"' + IDBOOK + '","Soluongton":' + ton + "}";
-            Bm = body;
-        } else if (ton == SLTON) {
-            let body = '{"id":"' + IDBOOK + '","Giaban":' + dongia + "}";
-            Bm = body;
-        } else {
-            let body =
-                '{"id":"' +
-                IDBOOK +
-                '","Giaban":' +
-                dongia +
-                ',"Soluongton":' +
-                ton +
-                "}";
-            Bm = body;
-        }
-        put("sach", Bm)
+        let body =
+            '{"id":"' +
+            IDBOOK +
+            '","Giaban":' +
+            dongia +
+            ',"Soluongton":' +
+            ton +
+            "}";
+        put("sach", body)
             .then((res) => {
                 if (res._id != null) {
                     alert("Cập Nhật Thành Công");
@@ -90,6 +77,88 @@ function submitFormprofile(e) {
             });
     } else {
         alert("Vui Lòng Nhập Lại");
+    }
+}
+
+//Add New Book
+const FormAddBook = document.getElementById("formNewBook");
+FormAddBook.addEventListener("submit", submitFormAddBook);
+
+function submitFormAddBook(e) {
+    e.preventDefault();
+    let tensach = document.getElementById("inputName").value;
+    let mota = document.getElementById("inputDesc").value;
+    let nxb = document.getElementById("inputNXB").value;
+    let tacgia = document.getElementById("inputTG").value;
+    let chude = document.getElementById("inputCD").value;
+    let Soln = document.getElementById("inputSoLuong").value;
+    let Gia = document.getElementById("inputPrice").value;
+
+    let check = [];
+    check.push(tensach != null);
+    check.push(mota != null);
+    check.push(nxb != null);
+    check.push(tacgia != null);
+    check.push(chude != null);
+    check.push(Soln != null);
+    check.push(Gia != null);
+
+    if (check.every((va) => va === true)) {
+        if (!(typeof img1 == "undefined")) {
+            const chudearr = [];
+            chudearr.push(chude);
+
+            const files = document.getElementById("inputImage");
+            const formData = new FormData();
+            for (let i = 0; i < files.files.length; i++) {
+                formData.append("img", files.files[i]);
+            }
+            postimg(formData).then(async (res) => {
+                if (res.data != null) {
+                    let linkAnh =
+                        "https://bookingapiiiii.herokuapp.com/open-image/" +
+                        res.data;
+                    let body =
+                        '{"Tensach":"' +
+                        tensach +
+                        '","Mota":"' +
+                        mota +
+                        '","Anhbia":"' +
+                        linkAnh +
+                        '","Soluongton":' +
+                        Soln +
+                        ',"Giaban":' +
+                        Gia +
+                        ',"MaCD":["' +
+                        chudearr +
+                        '"],"MaNXB":"' +
+                        nxb +
+                        '","MaTacGia":"' +
+                        tacgia +
+                        '"}';
+                    console.log(body);
+                    await fetch("https://bookingapiiiii.herokuapp.com/sach", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: body,
+                    })
+                        .then((result) => {
+                            console.log(result);
+                            alert(result);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            alert(err);
+                        });
+                } else {
+                    alert(res.Messager);
+                }
+            });
+        } else {
+            alert("Vui Lòng Nhập Lại");
+        }
     }
 }
 
@@ -119,6 +188,16 @@ async function getData(url = "") {
             "Content-Type": "application/json",
         },
     });
+    return response.json();
+}
+async function postimg(formData) {
+    const response = await fetch(
+        "https://bookingapiiiii.herokuapp.com/upload-image",
+        {
+            method: "post",
+            body: formData,
+        }
+    );
     return response.json();
 }
 

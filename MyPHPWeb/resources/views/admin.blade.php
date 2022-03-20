@@ -8,7 +8,8 @@
     <title>admin</title>
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/body_admin.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -17,13 +18,15 @@
             <a class="navbar-brand d-flex align-items-center me-md-auto ms-md-5" href="/">
                 <ion-icon name="book-outline"></ion-icon> MBook
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav text-center p-md-3 mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/admin">Trang Chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/account-manager">Tài Khoản</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page"
+                            href="/admin/account-manager">Tài Khoản</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/bill-pay">Hóa Đơn</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin/storage-products">Hàng Tồn Kho</a>
                     </li>
@@ -67,7 +70,8 @@
                     Thêm số lượng tồn: <input type="text" required name="storageNum" id="storageNum">
                     Giá: <input type="text" name="storagePrice" required id="storagePrice">
                 </div>
-                <button type="submit" class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES">
+                <button type="submit"
+                    class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES">
                     Cập Nhật
                 </button>
             </form>
@@ -79,7 +83,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="/js/admin.js"> </script>
 </body>
