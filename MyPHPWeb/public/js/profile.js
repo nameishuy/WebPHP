@@ -3,24 +3,15 @@ formProfile.addEventListener("submit", submitFormprofile);
 
 function submitFormprofile(e) {
     e.preventDefault();
-
-    const HoTen = document.getElementById("ten").value;
-    const Email = document.getElementById("mail").value;
-    const DiachiKH = document.getElementById("diachi").value;
-    const DienthoaiKH = document.getElementById("sdt").value;
-    const Ngaysinh = document.getElementById("date").value;
-
+    //Tạo 1 Mảng Rỗng
     let check = [];
-    check.push(!(typeof HoTen == "undefined"));
-    check.push(!(typeof DienthoaiKH == "undefined"));
-    check.push(!(typeof Email == "undefined"));
-    check.push(!(typeof Ngaysinh == "undefined"));
-    check.push(!(typeof DiachiKH == "undefined"));
-    check.push(typeof HoTen == "string");
-    check.push(typeof DienthoaiKH == "string");
-    check.push(typeof Email == "string");
-    check.push(typeof Ngaysinh == "string");
-    check.push(typeof DiachiKH == "string");
+    //Lấy Tất Cả Các Thẻ Có Đầu Input và Từ 1->5 Sẽ Lần Lượt Là Họ Ten, Email, Địa Chỉ, Số Điện Thoại và Ngày Sinh
+    var ArrayInput = document.getElementsByTagName("input");
+    for (let i = 1; i <= 5; i++) {
+        check.push(!(typeof ArrayInput[i].value == "undefined"));
+        check.push(typeof ArrayInput[i].value == "string");
+    }
+
     let isTrue = (va) => va === true;
 
     if (check.every(isTrue)) {
@@ -37,12 +28,12 @@ function submitFormprofile(e) {
                                 "https://bookingapiiiii.herokuapp.com/open-image/" +
                                 res.data;
                             await UpdateProfileHaveImg(
-                                HoTen,
-                                Email,
-                                DiachiKH,
-                                DienthoaiKH,
+                                ArrayInput[1].value, //Họ Tên
+                                ArrayInput[2].value, //Email
+                                ArrayInput[3].value, //Địa Chỉ
+                                ArrayInput[4].value, //Số Điện Thoại
                                 linkAnh,
-                                Ngaysinh
+                                ArrayInput[5].value //Ngày Sinh
                             )
                                 .then((res) => {
                                     alert(res.Messenger);
@@ -59,7 +50,13 @@ function submitFormprofile(e) {
                         alert(err);
                     });
             } else {
-                UpdateProfile(HoTen, Email, DiachiKH, DienthoaiKH, Ngaysinh)
+                UpdateProfile(
+                    ArrayInput[1].value, //Họ Tên
+                    ArrayInput[2].value, //Email
+                    ArrayInput[3].value, //Địa Chỉ
+                    ArrayInput[4].value, //Số Điện Thoại
+                    ArrayInput[5].value //Ngày Sinh
+                )
                     .then((res) => {
                         alert(res.Messenger);
                         window.location.href = "/profile";
@@ -81,26 +78,25 @@ changepass.addEventListener("submit", Submitchangepass);
 async function Submitchangepass(e) {
     e.preventDefault();
 
-    const oldpass = document.getElementById("oldpass").value;
-    const newpass = document.getElementById("newpass").value;
-    const compass = document.getElementById("compass").value;
-
     let check = [];
-    check.push(!(typeof oldpass == "undefined"));
-    check.push(!(typeof compass == "undefined"));
-    check.push(!(typeof newpass == "undefined"));
-    check.push(typeof oldpass == "string");
-    check.push(typeof compass == "string");
-    check.push(typeof newpass == "string");
-    check.push(!(typeof oldpass == ""));
-    check.push(!(typeof compass == ""));
-    check.push(!(typeof newpass == ""));
+    let ArrayInput = document.getElementsByTagName("input");
+
+    // 6: oldpass 7: newpass 8: compass
+    for (let i = 6; i <= 8; i++) {
+        check.push(!(typeof ArrayInput[i].value == "undefined"));
+        check.push(!(ArrayInput[i].value == ""));
+    }
 
     let isTrue = (va) => va === true;
 
+    // 6: oldpass 7: newpass 8: compass
     if (check.every(isTrue)) {
         if (typeof idUser == "string" && !(idUser == "")) {
-            ChangePass(oldpass, newpass, compass)
+            ChangePass(
+                ArrayInput[6].value,
+                ArrayInput[7].value,
+                ArrayInput[8].value
+            )
                 .then((res) => {
                     if (res.Messenger == "Cập Nhật Thành Công") {
                         alert(res.Messenger);

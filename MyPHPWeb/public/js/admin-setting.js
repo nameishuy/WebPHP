@@ -95,7 +95,6 @@ async function submitForm2(e) {
 const form3 = document.getElementById("form3");
 form3.addEventListener("submit", submitForm3);
 async function submitForm3(e) {
-    alert("hello")
     e.preventDefault();
     if (!(typeof img3 == "undefined")) {
         const files3 = document.getElementById("Banner3");

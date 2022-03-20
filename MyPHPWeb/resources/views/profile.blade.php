@@ -139,8 +139,7 @@ $ID = Session()->get('UserLogin')['id']; ?>
         anh.src = URL.createObjectURL(event.target.files[0]);
         imgchoose = event.target
     }
-    var idUser = '<?php echo $ID; ?>';
-    alert(idUser);
+    var idUser = '<?php echo $ID; ?>';  
 </script>
 <script src="/js/profile.js"></script>
 @endsection

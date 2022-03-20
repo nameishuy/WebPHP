@@ -144,12 +144,10 @@ function submitFormAddBook(e) {
                         },
                         body: body,
                     })
-                        .then((result) => {
-                            console.log(result);
+                        .then((result) => {                           
                             alert(result);
                         })
-                        .catch((err) => {
-                            console.log(err);
+                        .catch((err) => {                          
                             alert(err);
                         });
                 } else {
