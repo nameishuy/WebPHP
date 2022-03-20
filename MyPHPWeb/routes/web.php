@@ -67,6 +67,7 @@ Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 Route::view('/products', 'products');
 Route::get('/products', [WebController::class, 'product'])->name('product');
 
+
 Route::view('/cart', 'cart');
 Route::get('/cart', [WebController::class, 'cart']);
 Route::get('plusCountItem', [WebController::class, 'plusCountItem']);
@@ -83,7 +84,8 @@ Route::get('/details', [WebController::class, 'details']);
 Route::prefix('admin')->group(function () {
     Route::get('', [AdminController::class, 'AdminIndex']);
 
-    Route::get('account-manager', [AdminController::class, 'AdminAccount'])->name('account-manager');
+    Route::get('account-manager', [AdminController::class, 'AdminAccount']);
+    Route::get('account-manager/{idBill}', [AdminController::class, 'GetBill']);
     Route::get('bill-pay', [AdminController::class, 'AdminBill']);
     Route::get('storage-products', [AdminController::class, 'AdminStorage']);
 

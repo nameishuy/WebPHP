@@ -25,29 +25,29 @@ class AdminController extends Controller
             if ($req->session()->get("UserLogin")["Role"] == true) {
                 $url = "https://bookingapiiiii.herokuapp.com/";
                 //Check POST For Add New Author, New Category, New Publishing Company:
-                        // 1. Add New Author
-                        if( isset($_POST["BtnAddAuthor"])){
-                                $resAuthor = json_decode(Http::post($url . 'tacgia',[
-                                    'TenTG' => $_POST['inputAuthorName'],
-                                    'Diachi' => $_POST['inputAuthorAddr'],
-                                    'Tieusu' => $_POST['inputAuthorHist'],
-                                    'Dienthoai' => $_POST['inputAuthorPhone'],
-                                ]));
-                        }
+                // 1. Add New Author
+                if (isset($_POST["BtnAddAuthor"])) {
+                    $resAuthor = json_decode(Http::post($url . 'tacgia', [
+                        'TenTG' => $_POST['inputAuthorName'],
+                        'Diachi' => $_POST['inputAuthorAddr'],
+                        'Tieusu' => $_POST['inputAuthorHist'],
+                        'Dienthoai' => $_POST['inputAuthorPhone'],
+                    ]));
+                }
 
-                        if(isset($_POST["BtnAddCategory"])){
-                            $resAuthor = json_decode(Http::post($url . 'chude',[
-                                'TenChuDe' => $_POST['inputCategory']
-                            ]));
-                        }
+                if (isset($_POST["BtnAddCategory"])) {
+                    $resAuthor = json_decode(Http::post($url . 'chude', [
+                        'TenChuDe' => $_POST['inputCategory']
+                    ]));
+                }
 
-                        if( isset($_POST["BtnAddNXB"])){
-                            $resAuthor = json_decode(Http::post($url . 'nhaxuatban',[
-                                'TenNXB' => $_POST['inputNXB'],
-                                'Diachi' => $_POST['inputAddress'],
-                                'DienThoai' => $_POST['inputPhone']
-                            ]));
-                    }
+                if (isset($_POST["BtnAddNXB"])) {
+                    $resAuthor = json_decode(Http::post($url . 'nhaxuatban', [
+                        'TenNXB' => $_POST['inputNXB'],
+                        'Diachi' => $_POST['inputAddress'],
+                        'DienThoai' => $_POST['inputPhone']
+                    ]));
+                }
                 return  view('admin_setting');
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
@@ -92,6 +92,15 @@ class AdminController extends Controller
                 return view('admin_account', ['listUser' => $listUser, 'total' => count($listUsercount), 'pages' => $pages, 'last' => $last]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
+    }
+    function GetBill($id, Request $req)
+    {
+        $url = "https://bookingapiiiii.herokuapp.com/";
+        $listBill = json_decode(Http::get($url . 'DonHangbyid/' . $id), true);
+
+        $listCTBill = json_decode(Http::get($url . 'CTDonHangbyid/' . $id), true);
+
+        return view('dialogBill', compact('listBill', 'listCTBill'));
     }
 
     function AdminBill(Request $req)

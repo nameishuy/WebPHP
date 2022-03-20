@@ -1,5 +1,3 @@
-
-
 const formProfile = document.getElementById("Profile");
 formProfile.addEventListener("submit", submitFormprofile);
 

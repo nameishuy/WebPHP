@@ -6,7 +6,7 @@
 <?php else : ?>
     <h1>{{Session::get('mess')}}</h1>
 <?php endif;
-$ID = Session::get('UserLogin')['id']; ?>
+$ID = Session()->get('UserLogin')['id']; ?>
 <section class="py-5 my-5">
     <div class="container">
         <div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -74,9 +74,7 @@ $ID = Session::get('UserLogin')['id']; ?>
                                 <div class="form-group">
                                     <label>Số Điện Thoại (nhập đủ 10 số) </label>
                                     @if(isset($data['DienthoaiKH']))
-                                    <input type="tel" class="form-control" id="sdt" value="{{$data['DienthoaiKH']}}"
-                                    pattern="[0-9]{10}"
-                                    required>
+                                    <input type="tel" class="form-control" id="sdt" value="{{$data['DienthoaiKH']}}" pattern="[0-9]{10}" required>
                                     @else
                                     <input type="text" class="form-control" id="sdt" required>
                                     @endif
@@ -142,6 +140,7 @@ $ID = Session::get('UserLogin')['id']; ?>
         imgchoose = event.target
     }
     var idUser = '<?php echo $ID; ?>';
+    alert(idUser);
 </script>
 <script src="/js/profile.js"></script>
 @endsection
