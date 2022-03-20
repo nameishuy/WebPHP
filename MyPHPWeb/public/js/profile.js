@@ -151,7 +151,6 @@ async function UpdateProfileHaveImg(
         '",\n "Anh":"' +
         Anh +
         '"\n}';
-    console.log(data);
     const response = await fetch(
         "https://bookingapiiiii.herokuapp.com/khachhang",
         {
