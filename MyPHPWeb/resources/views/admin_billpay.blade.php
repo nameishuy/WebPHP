@@ -10,20 +10,33 @@
 </div>
 <div class="Admin__HistoryPay-Body">
     <?php
-    foreach ($list as $bill) {
+
+    if ($list == null) {
     ?>
-        <div class="Admin__HistoryPay-Details">
-
-            <div class="Bill__BillID"><?php echo $bill['id'] ?></div>
-            <div class="Bill__Username"><?php echo $bill['HoTen'] ?></div>
-            <div class="Bill__DatePay"><?php echo date('j \\ F Y', strtotime($bill['Ngaydat'])) ?></div>
-
-            <div class="Bill__Setting">
-                <div class="Bill__Setting-details" onclick="showDialog('<?php echo $bill['id'] ?>')">Chi
-                    Tiết</div>
+        <div class='Cart__Products-Empty'>
+            <div class='Cart__Products-Empty-image'>
+                <img src='https://i.pinimg.com/originals/ec/0c/0c/ec0c0c652f7a9fb965bf08f45c4403fe.gif' alt=''>
             </div>
+            <span>Hiện Chưa Có Đơn Hàng Nào Được Đặt</span>
         </div>
-    <?php } ?>
+        <?php
+    } else {
+        foreach ($list as $bill) {
+        ?>
+            <div class="Admin__HistoryPay-Details">
+
+                <div class="Bill__BillID"><?php echo $bill['id'] ?></div>
+                <div class="Bill__Username"><?php echo $bill['HoTen'] ?></div>
+                <div class="Bill__DatePay"><?php echo date('j \\ F Y', strtotime($bill['Ngaydat'])) ?></div>
+
+                <div class="Bill__Setting">
+                    <div class="Bill__Setting-details" onclick="showDialog('<?php echo $bill['id'] ?>')">Chi
+                        Tiết</div>
+                </div>
+            </div>
+    <?php }
+    }
+    ?>
 
     <ul class="pagination" id="pagination">
         <?php

@@ -15,34 +15,49 @@
 
 
     <?php
-    foreach ($listUser as $user) {
+    if ($listUser == null) {
+
+
     ?>
-        <div class="Admin__Account-Account-Details">
-            <div class="Checkbox__Account">
-                <input type="checkbox" name="" class="checkbox" id="checkbox__account">
+        <div class='Cart__Products-Empty'>
+            <div class='Cart__Products-Empty-image'>
+                <img src='https://i.pinimg.com/originals/ec/0c/0c/ec0c0c652f7a9fb965bf08f45c4403fe.gif' alt=''>
             </div>
-
-            <div class="User__username"><?php echo $user['Taikhoan'] ?></div>
-
-            <?php
-            if (isset($user['Email'])) echo "<div class='User__email' >{$user['Email']}</div>";
-            else echo "<div class='User__email' >Chưa Cập Nhật</div>";
-            ?>
-
-            <?php
-            if ($user['Role'] == true) echo "<div class='User__role' >Admin</div>";
-            else { ?>
-                <div class='User__role'>Khách</div>
-
-                <div class='User__setting'>
-                    <div class='User__setting-deleteAccount' onclick="showDialogDeleteAccount('<?php echo $user['_id'] ?>','<?php echo $user['Role'] ?>')">
-                        Xóa Tài Khoản
-                    </div>
-                </div>
-            <?php    }
-            ?>
+            <span>Hiện Không Có Tài Khoản Nào Được Đăng Ký</span>
         </div>
-    <?php } ?>
+        <?php
+    } else {
+
+        foreach ($listUser as $user) {
+
+        ?>
+            <div class="Admin__Account-Account-Details">
+                <div class="Checkbox__Account">
+                    <input type="checkbox" name="" onclick="SetRole('<?php echo $user['_id'] ?>')" class="checkbox" id="checkbox__account">
+                </div>
+
+                <div class="User__username"><?php echo $user['Taikhoan'] ?></div>
+
+                <?php
+                if (isset($user['Email'])) echo "<div class='User__email' >{$user['Email']}</div>";
+                else echo "<div class='User__email' >Chưa Cập Nhật</div>";
+                ?>
+
+                <?php
+                if ($user['Role'] == true) echo "<div class='User__role' >Admin</div>";
+                else { ?>
+                    <div class='User__role'>Khách</div>
+
+                    <div class='User__setting'>
+                        <div class='User__setting-deleteAccount' onclick="showDialogDeleteAccount('<?php echo $user['_id'] ?>','<?php echo $user['Role'] ?>')">
+                            Xóa Tài Khoản
+                        </div>
+                    </div>
+                <?php    }
+                ?>
+            </div>
+    <?php }
+    } ?>
 
     <ul class="pagination" id="pagination">
         <?php
@@ -71,8 +86,10 @@
     </ul>
 
 
-    <div class="UpdateAll__Setting">
+    <div onclick="CapQuyenAdmin()" class="UpdateAll__Setting">
         Cấp Quyền Admin
     </div>
 </div>
+
+<script type="text/javascript" src="/js/admin_account.js"> </script>
 @endsection

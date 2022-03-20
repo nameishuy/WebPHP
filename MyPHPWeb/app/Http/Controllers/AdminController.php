@@ -67,8 +67,12 @@ class AdminController extends Controller
                 $url = "https://bookingapiiiii.herokuapp.com/";
                 $listcount = json_decode(Http::get($url . 'sach'), true);
                 $list = json_decode(Http::get($url . 'sachpagination/' . $pages . "/" . $last), true);
-
-                return view('admin_storage', ['list' => $list, 'total' => count($listcount), 'pages' => $pages, 'last' => $last]);
+                if ($listcount == null) {
+                    $total = 0;
+                } else {
+                    $total = count($listcount);
+                }
+                return view('admin_storage', ['list' => $list, 'total' =>   $total, 'pages' => $pages, 'last' => $last]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
@@ -88,11 +92,17 @@ class AdminController extends Controller
                 $role = "false";
                 $listUsercount = json_decode(Http::get($url . 'khachhangforadmin/' . $role), true);
                 $listUser = json_decode(Http::get($url . 'khachhangforadmin/' . $role . "/" . $pages . "/" . $last), true);
+                if ($listUsercount == null) {
+                    $total = 0;
+                } else {
+                    $total = count($listUsercount);
+                }
 
-                return view('admin_account', ['listUser' => $listUser, 'total' => count($listUsercount), 'pages' => $pages, 'last' => $last]);
+                return view('admin_account', ['listUser' => $listUser, 'total' => $total, 'pages' => $pages, 'last' => $last]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
+
     function GetBill($id, Request $req)
     {
         $url = "https://bookingapiiiii.herokuapp.com/";
@@ -117,7 +127,13 @@ class AdminController extends Controller
                 $url = "https://bookingapiiiii.herokuapp.com/";
                 $listcount = json_decode(Http::get($url . 'DonHang'), true);
                 $list = json_decode(Http::get($url . 'DonHang/' . $pages . "/" . $last), true);
-                return view('admin_billpay', ['list' => $list, 'total' => count($listcount), 'pages' => $pages, 'last' => $last]);
+                if ($listcount == null) {
+                    $total = 0;
+                } else {
+                    $total = count($listcount);
+                }
+
+                return view('admin_billpay', ['list' => $list, 'total' => $total, 'pages' => $pages, 'last' => $last]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
