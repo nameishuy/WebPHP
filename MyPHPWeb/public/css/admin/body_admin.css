@@ -438,6 +438,31 @@
 	border-radius: .3rem;
 	margin: 10px 0;
   }
+
+  .Admin__Account-Empty{
+	margin: 30px auto;
+	width: fit-content;
+	height: 180px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+	animation: toVisible 2s 1 forwards;
+}
+	.Admin__Account-Empty-image{
+		width: 150px;
+		height: 150px;
+		overflow: hidden;
+		border-radius: 10rem;
+	}
+		.Admin__Account-Empty-image img{
+			width: 100%;
+			height: 100%;
+		}
+		.Admin__Account-Empty span{
+			color: red;
+			font-weight: 600;
+		}
 /* Responsive */
 @media screen and (max-width: 415px) {
 	.Admin__Container {
