@@ -108,5 +108,5 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/js/admin_account.js"> </script>
+<script type="text/javascript" src="/js/admin-setting.js"> </script>
 @endsection

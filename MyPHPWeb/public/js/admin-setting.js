@@ -1,20 +1,38 @@
 let img1;
 function loadimg(event) {
     const anh = document.getElementById("banner1");
-    anh.src = URL.createObjectURL(event.target.files[0]);
-    img1 = event.target.files[0];
+    if (event.target.files != null) {
+        if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+            alert("Không Hỗ Trợ File");
+            return;
+        }
+        anh.src = URL.createObjectURL(event.target.files[0]);
+        img1 = event.target.files[0];
+    }
 }
 let img2;
 function loadimg2(event) {
     const anh = document.getElementById("banner2");
-    anh.src = URL.createObjectURL(event.target.files[0]);
-    img2 = event.target.files[0];
+    if (event.target.files != null) {
+        if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+            alert("Không Hỗ Trợ File");
+            return;
+        }
+        anh.src = URL.createObjectURL(event.target.files[0]);
+        img2 = event.target.files[0];
+    }
 }
 let img3;
 function loadimg3(event) {
     const anh = document.getElementById("banner3");
-    anh.src = URL.createObjectURL(event.target.files[0]);
-    img3 = event.target.files[0];
+    if (event.target.files != null) {
+        if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+            alert("Không Hỗ Trợ File");
+            return;
+        }
+        anh.src = URL.createObjectURL(event.target.files[0]);
+        img3 = event.target.files[0];
+    }
 }
 
 const form = document.getElementById("form");
