@@ -72,6 +72,7 @@ Route::get('plusCountItem', [WebController::class, 'plusCountItem']);
 Route::get('minusCountItem', [WebController::class, 'minusCountItem']);
 
 Route::get('history-pay',[WebController::class,'HistoryPay']);
+Route::get('CTBill/{idBill}/{date}/{money}/{TT}', [WebController::class, 'CTBill']);
 
 
 

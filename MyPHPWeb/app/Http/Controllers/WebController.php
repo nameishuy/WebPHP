@@ -280,19 +280,29 @@ class WebController extends Controller
     }
 
 
-    function HistoryPay(Request $req){
+    function HistoryPay(Request $req)
+    {
         $url = "https://bookingapiiiii.herokuapp.com/";
-        if($req->session()->has('UserLogin')){
+        if ($req->session()->has('UserLogin')) {
 
-            if(isset($req->session()->get('UserLogin')['id'])){
-               $id = $req->session()->get('UserLogin')['id'];
+            if (isset($req->session()->get('UserLogin')['id'])) {
+                $id = $req->session()->get('UserLogin')['id'];
 
-               $data = json_decode(Http::get($url . 'DonHangbyidKH/' . $id));
-               //dd($data);
-               return view('historypay',['listHistoryPay'=>$data]);
-            }else{
+                $data = json_decode(Http::get($url . 'DonHangbyidKH/' . $id));
+                //dd($data);
+                $detailhistory = json_decode(Http::get($url . 'CTDonHang/' . $id));
+                return view('historypay', ['listHistoryPay' => $data]);
+            } else {
                 return view('notlogin');
             }
-        }else return view('notlogin');
+        } else return view('notlogin');
+    }
+
+    function CTBill($idBill, $date, $money, $TT)
+    {
+        $url = "https://bookingapiiiii.herokuapp.com/";
+        $dateformat = date('j \\ F Y', strtotime($date));
+        $listCTBill = json_decode(Http::get($url . 'CTDonHangbyid/' . $idBill), true);
+        return view('dialogHistoryPay', compact('listCTBill', 'idBill', 'dateformat', 'money', 'TT'));
     }
 }

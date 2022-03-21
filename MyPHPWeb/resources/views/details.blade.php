@@ -4,7 +4,7 @@
 
     <body>
         <div class="Details__container">
-            <?php
+        <?php
         foreach ($details as $bk) {
         ?>
             <div class="Book__details">
