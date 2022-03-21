@@ -3,7 +3,7 @@
     width: 70%;
     overflow: hidden;
     margin-top: 25px;
-    box-shadow: 0 0 5px 0 black;
+    box-shadow: 0 0 5px 0 rgba(119, 114, 114, 0.76);
     border-radius: 1rem;
     font-family: 'Nunito Sans', sans-serif;
 }
@@ -54,7 +54,7 @@
     justify-content: space-around;
 }
 .btnCarousel{
-    box-shadow: 0 0 10px 0 black !important;
+    box-shadow: 0 0 10px 0 rgba(119, 114, 114, 0.76);
     background-color: black !important;
     width: 40px !important;
     height: 40px !important;
@@ -68,14 +68,14 @@
     margin-top: 40px;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    box-shadow: 0 0 2px 0 black;
+    box-shadow: 0 0 2px 0 rgba(119, 114, 114, 0.76);
     transition: .5s;
     text-decoration: none;
     color: black;
 }
     .SellingBook:hover{
         cursor: pointer;
-        box-shadow: 0 0 10px 4px rgba(163, 163, 163, 0.733);
+        box-shadow: 0 0 20px 0 rgba(158, 154, 154, 0.63);
         transform: translateY(-10px) !important;
         text-decoration: none;
         color: black;
@@ -121,13 +121,13 @@
     margin: 80px auto 100px auto;
     border: 1px solid black;
     border-radius: 1rem;
-    box-shadow: 0 0 20px 0 black;
+    box-shadow: 0 0 20px 0 rgba(119, 114, 114, 0.76);
     padding: 100px 200px 100px 200px;
 }
     .Good__Book-image{
         width: 30%;
         transform: rotate(-20deg) skew(-20deg,-3deg);
-        box-shadow: -10px 0 20px 3px black;
+        box-shadow: -10px 0 20px 3px rgba(119, 114, 114, 0.76);
         animation: toUpAndDown 2s infinite;
     }
     @keyframes toUpAndDown{
@@ -168,7 +168,7 @@
             width: 100px;
             height: 40px;
             text-align: center;
-            padding-top: 6px;
+            padding-top: 8px;
             background-color: rgba(255, 0, 0, 0.781);
             color: white;
             font-weight: 600;
