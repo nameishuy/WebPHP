@@ -61,8 +61,6 @@ Route::get('/profile', function () {
     }
 });
 
-Route::post('profile', [Acc::class, 'profile'])->name('profile');
-Route::post('updatepass', [Acc::class, 'updatepass'])->name('updatepass');
 
 Route::view('/products', 'products');
 Route::get('/products', [WebController::class, 'product'])->name('product');
@@ -72,6 +70,8 @@ Route::view('/cart', 'cart');
 Route::get('/cart', [WebController::class, 'cart']);
 Route::get('plusCountItem', [WebController::class, 'plusCountItem']);
 Route::get('minusCountItem', [WebController::class, 'minusCountItem']);
+
+Route::get('history-pay',[WebController::class,'HistoryPay']);
 
 
 

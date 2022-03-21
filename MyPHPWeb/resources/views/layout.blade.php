@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/user/products.css">
     <link rel="stylesheet" href="/css/user/cart.css">
     <link rel="stylesheet" href="/css/user/details.css">
+    <link rel="stylesheet" href="/css/user/historypay.css">
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -77,7 +78,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuAccount">
                         <li><a class="dropdown-item" id="Item__Account" href="/profile">Thông Tin Tài Khoản</a></li>
-
+                        <li><a class="dropdown-item" id="Item__Account" href="/history-pay">Lịch Sử Mua Hàng</a></li>
                         @if (isset(Session::get('UserLogin')['Role']))
                             @if (Session::get('UserLogin')['Role'] == true)
                                 <li><a class="dropdown-item" id="Item__Account" href="/admin">Admin</a></li>

@@ -278,4 +278,21 @@ class WebController extends Controller
             } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
         } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
     }
+
+
+    function HistoryPay(Request $req){
+        $url = "https://bookingapiiiii.herokuapp.com/";
+        if($req->session()->has('UserLogin')){
+
+            if(isset($req->session()->get('UserLogin')['id'])){
+               $id = $req->session()->get('UserLogin')['id'];
+
+               $data = json_decode(Http::get($url . 'DonHangbyidKH/' . $id));
+               //dd($data);
+               return view('historypay',['listHistoryPay'=>$data]);
+            }else{
+                return view('notlogin');
+            }
+        }else return view('notlogin');
+    }
 }
