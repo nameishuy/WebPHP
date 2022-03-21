@@ -71,7 +71,7 @@ Route::get('/cart', [WebController::class, 'cart']);
 Route::get('plusCountItem', [WebController::class, 'plusCountItem']);
 Route::get('minusCountItem', [WebController::class, 'minusCountItem']);
 
-Route::get('history-pay',[WebController::class,'HistoryPay']);
+Route::get('history-pay', [WebController::class, 'HistoryPay']);
 Route::get('CTBill/{idBill}/{date}/{money}/{TT}', [WebController::class, 'CTBill']);
 
 
@@ -86,7 +86,7 @@ Route::prefix('admin')->group(function () {
     Route::get('', [AdminController::class, 'AdminIndex']);
 
     Route::get('account-manager', [AdminController::class, 'AdminAccount']);
-    Route::get('account-manager/{idBill}', [AdminController::class, 'GetBill']);
+    Route::get('account-manager/{idBill}/{date}/{money}/{TT}', [AdminController::class, 'GetBill']);
     Route::get('bill-pay', [AdminController::class, 'AdminBill']);
     Route::get('storage-products', [AdminController::class, 'AdminStorage']);
 

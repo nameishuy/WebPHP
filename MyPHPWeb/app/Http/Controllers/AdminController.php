@@ -103,14 +103,12 @@ class AdminController extends Controller
         } else return view('admin_notAdmin');
     }
 
-    function GetBill($idBill, Request $req)
+    function GetBill($idBill, $date, $money, $TT, Request $req)
     {
         $url = "https://bookingapiiiii.herokuapp.com/";
-        $listBill = json_decode(Http::get($url . 'DonHangbyid/' . $idBill), true);
-
         $listCTBill = json_decode(Http::get($url . 'CTDonHangbyid/' . $idBill), true);
 
-        return view('dialogBill', compact('listBill', 'listCTBill'));
+        return view('dialogBill', compact('idBill', 'date', 'money', 'TT', 'listCTBill'));
     }
 
     function AdminBill(Request $req)

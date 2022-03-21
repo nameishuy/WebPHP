@@ -80,7 +80,6 @@ function submitFormprofile(e) {
     }
 }
 
-
 async function getData(url = "") {
     let BookingApi = "https://bookingapiiiii.herokuapp.com/";
     const response = await fetch(BookingApi + url, {
@@ -131,12 +130,16 @@ async function delteleData(url = "") {
     return response.json();
 }
 
-function showDialog(idBill) {
+function showDialog(idBill, date, money, tinhtrang) {
     let details = document.getElementById("DialogDetailsPay__Container");
     details.style.display = "block";
-
+    if (tinhtrang == true) {
+        TT = "true";
+    } else {
+        TT = "false";
+    }
     $.ajax({
-        url: "account-manager/" + idBill,
+        url: "account-manager/" + idBill + "/" + date + "/" + money + "/" + TT,
         type: "GET",
     }).done((res) => {
         $("#DialogDetailsPay").empty();

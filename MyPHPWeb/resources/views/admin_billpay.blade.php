@@ -30,7 +30,7 @@
                 <div class="Bill__DatePay"><?php echo date('j \\ F Y', strtotime($bill['Ngaydat'])) ?></div>
 
                 <div class="Bill__Setting">
-                    <div class="Bill__Setting-details" onclick="showDialog('<?php echo $bill['id'] ?>')">Chi
+                    <div class="Bill__Setting-details" onclick="showDialog('<?php echo $bill['id'] ?>','<?php echo date('j \\ F Y', strtotime($bill['Ngaydat'])) ?>','<?php echo $bill['TongTien'] ?>','<?php echo $bill['Tinhtranggiaohang'] ?>')">Chi
                         Tiết</div>
                 </div>
             </div>
