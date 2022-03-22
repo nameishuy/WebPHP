@@ -35,10 +35,11 @@
                 $pages = $_GET["pages"];
             }
             //Lấy tổng sản phẩm trong data bằng query select count(id) from name_table với JDBC Connect
-            $total = WebController::countbook();
+
             //Lấy Danh Sách Sản Phẩm
             $list = WebController::getlist($pages, $last);
-            foreach ($list as $data) {
+            $total = $list['count'];         
+            foreach ($list['data'] as $data) {
                 if (isset($data["Messager"])) {
 
             ?>

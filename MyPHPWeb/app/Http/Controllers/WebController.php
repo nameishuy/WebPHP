@@ -33,33 +33,18 @@ class WebController extends Controller
         return view('products', ['chude' => $chude]);
     }
 
-    public static function countbook()
-    {
-
-        $linkbook = "https://bookingapiiiii.herokuapp.com/sach";
-        if (isset($_GET["chude"])) {
-            $linkbook = "https://bookingapiiiii.herokuapp.com/sachbyCD/" . $_GET["chude"];
-        } elseif (isset($_GET["search"])) {
-            $linkbook = "https://bookingapiiiii.herokuapp.com/sachbyname";
-            $book = json_decode(Http::post($linkbook, ["name" => $_GET["search"]]), true);
-            return count($book);
-        }
-        $book = json_decode(Http::get($linkbook), true);
-        return count($book);
-    }
-
     public static function getlist($pages, $last)
     {
-        $url = "https://bookingapiiiii.herokuapp.com/sachpagination/" . $pages . "/" . $last;
+        $url = "https://bookingapiiiii.herokuapp.com/PhanTrang/" . $pages . "/" . $last;
         //
         if (isset($_GET["chude"])) {
             //
-            $url = "https://bookingapiiiii.herokuapp.com/sachpaginationbychude/" . $_GET["chude"] . "/" . $pages . "/" . $last;
+            $url = "https://bookingapiiiii.herokuapp.com/PhanTrangChuDe/" . $_GET["chude"] . "/" . $pages . "/" . $last;
 
             //
         } elseif (isset($_GET["search"])) {
             //
-            $url = "https://bookingapiiiii.herokuapp.com/sachpaginationSearch";
+            $url = "https://bookingapiiiii.herokuapp.com/PhanTrangSearch";
             //
             $book = json_decode(Http::post($url, [
                 "keyword" => $_GET["search"],
@@ -70,7 +55,7 @@ class WebController extends Controller
             return $book;
         }
         //
-        $book = json_decode(Http::get($url), true);
+        $book = json_decode(Http::get($url), true);        
         //      
         return $book;
     }
