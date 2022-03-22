@@ -85,4 +85,5 @@
             img1 = event.target.files[0];
         }
     </script>
+     <script type="text/javascript" src="/js/admin_addnewbook.js"> </script>
 @endsection
