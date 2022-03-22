@@ -55,7 +55,8 @@ class WebController extends Controller
             return $book;
         }
         //
-        $book = json_decode(Http::get($url), true);        
+        $book = json_decode(Http::get($url), true);   
+        
         //      
         return $book;
     }
