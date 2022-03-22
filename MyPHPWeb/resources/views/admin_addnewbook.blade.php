@@ -27,7 +27,7 @@
                     <select class="form-select" aria-label="Default select example" id="inputNXB" required>
                         <option selected>--Chọn Nhà Xuất Bản--</option>
                         <?php
-                            foreach($listNXB as $nxb){
+                            foreach($list['NXB'] as $nxb){
                         ?>
                         <option value="<?php echo $nxb['_id']; ?>">
                             <?php echo $nxb['TenNXB']; ?>
@@ -40,7 +40,7 @@
                     <select class="form-select" aria-label="Default select example" id="inputTG" required>
                         <option selected>--Chọn Tác Giả--</option>
                         <?php
-                            foreach ($listTG as $bk ) {
+                            foreach ($list['tacgia'] as $bk ) {
                         ?>
                         <option value="<?php echo $bk['_id']; ?>">
                             <?php echo $bk['TenTG']; ?>
@@ -53,7 +53,7 @@
                     <select class="form-select" aria-label="Default select example" id="inputCD" required>
                         <option selected>--Chọn Chủ Đề--</option>
                         <?php
-                            foreach($listCD as $cd){
+                            foreach($list['chude'] as $cd){
                         ?>
                         <option value="<?php echo $cd['_id']; ?>">
                             <?php echo $cd['TenChuDe']; ?>

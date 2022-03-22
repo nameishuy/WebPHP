@@ -141,10 +141,8 @@ class AdminController extends Controller
         if (isset($req->session()->get("UserLogin")["Role"])) {
             if ($req->session()->get("UserLogin")["Role"] == true) {
                 $url = "https://bookingapiiiii.herokuapp.com/";
-                $listNXB = json_decode(Http::get($url . 'nhaxuatban'), true);
-                $listTG = json_decode(Http::get($url . 'tacgia'), true);
-                $listCD = json_decode(Http::get($url . 'chude'), true);
-                return view('admin_addnewbook', ['listNXB' => $listNXB, 'listTG' => $listTG, 'listCD' => $listCD]);
+                $list = json_decode(Http::get($url . 'GETALL'), true);                      
+                return view('admin_addnewbook', ['list' => $list]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
