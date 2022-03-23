@@ -127,7 +127,7 @@
     .Good__Book-image{
         width: 30%;
         transform: rotate(-20deg) skew(-20deg,-3deg);
-        box-shadow: -10px 0 20px 3px rgba(119, 114, 114, 0.76);
+        box-shadow: -10px 0 20px 0px rgba(119, 114, 114, 0.76);
         animation: toUpAndDown 2s infinite;
     }
     @keyframes toUpAndDown{

@@ -194,14 +194,18 @@ class WebController extends Controller
 
         if (session()->has('UserLogin')) {
 
-            if (isset(session()->get('UserLogin')['id'])) {
+            if (isset(session()->get('UserLogin')['id']) && session()->has("idbookforcart")) {
                 $id = session()->get('UserLogin')['id'];
                 $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
 
 
                 return view('cart', ['data' => $data, 'listCart' => $req->session()->get("idbookforcart")]);
-            } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
-        } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
+            } else return view('cart', ['data', 'listCart' => []]);
+        } else{
+            if(session()->has("idbookforcart")) return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
+            else return view('cart', ['data', 'listCart' => []]);
+    
+        }
     }
 
     function plusCountItem(Request $req)

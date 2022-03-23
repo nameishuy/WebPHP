@@ -24,7 +24,7 @@
                     </div>
                     <?php
                 use App\Http\Controllers\WebController;
-                if ($listCart == null || $listCart == []) {
+                if ($listCart == null || $listCart == [] || !isset($listCart)) {
                     echo "  
                         <div class='Cart__Products-Empty'>
                             <div class='Cart__Products-Empty-image'>
