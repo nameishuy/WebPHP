@@ -15,9 +15,8 @@
 
 
     <?php
-    if ($listUser == null) {
 
-
+    if (!array_key_exists('data', $list)) {
     ?>
         <div class='Admin__Account-Empty'>
             <div class='Admin__Account-Empty-image'>
@@ -27,8 +26,9 @@
         </div>
         <?php
     } else {
+        $total = $list['count'];
 
-        foreach ($listUser as $user) {
+        foreach ($list['data'] as $user) {
 
         ?>
             <div class="Admin__Account-Account-Details">
@@ -56,34 +56,36 @@
                 <?php    }
                 ?>
             </div>
-    <?php }
+        <?php }
+        ?>
+        <ul class="pagination" id="pagination">
+            <?php
+            $TotalPage = ceil($total / $last);
+
+            if ($pages > 1 && $TotalPage > 1) {
+                echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages - 1) . '">Prev</a></li>';
+            }
+            //Lap so pages
+            for ($i = 1; $i <= $TotalPage; $i++) {
+                if ($pages == $i) {
+            ?>
+                    <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
+                <?php
+                } else {
+                ?>
+                    <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
+            <?php }
+            }
+
+            if ($pages < $TotalPage && $TotalPage > 1) {
+                echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages + 1) . '">Next</a></li>';
+            }
+            ?>
+
+        </ul>
+    <?php
     } ?>
 
-    <ul class="pagination" id="pagination">
-        <?php
-        $TotalPage = ceil($total / $last);
-
-        if ($pages > 1 && $TotalPage > 1) {
-            echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages - 1) . '">Prev</a></li>';
-        }
-        //Lap so pages
-        for ($i = 1; $i <= $TotalPage; $i++) {
-            if ($pages == $i) {
-        ?>
-                <li class="page-item active"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
-            <?php
-            } else {
-            ?>
-                <li class="page-item"><a class="page-link" href="?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
-        <?php }
-        }
-
-        if ($pages < $TotalPage && $TotalPage > 1) {
-            echo '  <li class="page-item"><a class="page-link" href="?pages=' . ($pages + 1) . '">Next</a></li>';
-        }
-        ?>
-
-    </ul>
 
 
     <div onclick="CapQuyenAdmin()" class="UpdateAll__Setting">

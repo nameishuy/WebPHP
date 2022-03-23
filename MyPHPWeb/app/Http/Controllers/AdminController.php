@@ -90,15 +90,9 @@ class AdminController extends Controller
 
                 $url = "https://bookingapiiiii.herokuapp.com/";
                 $role = "false";
-                $listUsercount = json_decode(Http::get($url . 'khachhangforadmin/' . $role), true);
-                $listUser = json_decode(Http::get($url . 'khachhangforadmin/' . $role . "/" . $pages . "/" . $last), true);
-                if ($listUsercount == null) {
-                    $total = 0;
-                } else {
-                    $total = count($listUsercount);
-                }
+                $list = json_decode(Http::get($url . 'khachhangforadmin/' . $role . "/" . $pages . "/" . $last), true);
 
-                return view('admin_account', ['listUser' => $listUser, 'total' => $total, 'pages' => $pages, 'last' => $last]);
+                return view('admin_account', ['list' => $list, 'pages' => $pages, 'last' => $last]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
@@ -141,7 +135,7 @@ class AdminController extends Controller
         if (isset($req->session()->get("UserLogin")["Role"])) {
             if ($req->session()->get("UserLogin")["Role"] == true) {
                 $url = "https://bookingapiiiii.herokuapp.com/";
-                $list = json_decode(Http::get($url . 'GETALL'), true);                      
+                $list = json_decode(Http::get($url . 'GETALL'), true);
                 return view('admin_addnewbook', ['list' => $list]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
