@@ -24,9 +24,7 @@ function submitFormprofile(e) {
                 postimg(formData)
                     .then(async (res) => {
                         if (res.data != null) {
-                            let linkAnh =
-                                "https://bookingapiiiii.herokuapp.com/open-image/" +
-                                res.data;
+                            let linkAnh = res.data;
                             await UpdateProfileHaveImg(
                                 ArrayInput[1].value, //Họ Tên
                                 ArrayInput[2].value, //Email

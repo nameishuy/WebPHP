@@ -49,10 +49,7 @@ function submitForm(e) {
 
         postimg(formData).then(async (res) => {
             if (res.data != null) {
-                let linkAnh =
-                    '{"Image":"https://bookingapiiiii.herokuapp.com/open-image/' +
-                    res.data +
-                    '"}';
+                let linkAnh = '{"Image":"' + res.data + '"}';
                 await fetch(
                     "https://bookingapiiiii.herokuapp.com/Banner1/Anh1",
                     {
@@ -86,10 +83,7 @@ async function submitForm2(e) {
 
         postimg(formData2).then(async (res) => {
             if (res.data != null) {
-                let linkAnh =
-                    '{"Image":"https://bookingapiiiii.herokuapp.com/open-image/' +
-                    res.data +
-                    '"}';
+                let linkAnh = '{"Image":"' + res.data + '"}';
                 await fetch(
                     "https://bookingapiiiii.herokuapp.com/Banner1/Anh2",
                     {
@@ -122,10 +116,7 @@ async function submitForm3(e) {
         }
         postimg(formData3).then(async (res) => {
             if (res.data != null) {
-                let linkAnh =
-                    '{"Image":"https://bookingapiiiii.herokuapp.com/open-image/' +
-                    res.data +
-                    '"}';
+                let linkAnh = '{"Image":"' + res.data + '"}';
                 await fetch(
                     "https://bookingapiiiii.herokuapp.com/Banner1/Anh3",
                     {

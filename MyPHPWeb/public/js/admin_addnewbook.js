@@ -33,9 +33,7 @@ function submitFormAddBook(e) {
             }
             postimg(formData).then(async (res) => {
                 if (res.data != null) {
-                    let linkAnh =
-                        "https://bookingapiiiii.herokuapp.com/open-image/" +
-                        res.data;
+                    let linkAnh = res.data;
                     let body =
                         '{"Tensach":"' +
                         tensach +
@@ -54,7 +52,6 @@ function submitFormAddBook(e) {
                         '","MaTacGia":"' +
                         tacgia +
                         '"}';
-                    console.log(body);
                     await fetch("https://bookingapiiiii.herokuapp.com/sach", {
                         method: "POST",
                         headers: {
@@ -63,7 +60,7 @@ function submitFormAddBook(e) {
                         body: body,
                     })
                         .then((result) => {
-                            alert(result);
+                            alert("Thêm Thành Công");
                         })
                         .catch((err) => {
                             alert(err);
