@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
 use PhpParser\Node\Expr\Cast\Double;
 
 use function PHPUnit\Framework\isEmpty;
@@ -78,7 +79,7 @@ class WebController extends Controller
         return view('details', ['details' => $bookdetails]);
     }
 
-    function cart(Request $req)
+    function CreateCart(Request $req)
     {
         if (isset($_GET['id'])) {
             if (isset($_GET['token'])) {
@@ -178,13 +179,12 @@ class WebController extends Controller
                                 }
                                 if (isset($response['MaDonHang'])) {
                                     $req->session()->put("idbookforcart", []);
-                                    return view('/cart', ['listCart' =>
-                                    $req->session()->get("idbookforcart"), 'mess' => "Đặt hàng thành công nhá"]);
+                                    $req->session()->put('Mess', "Đặt hàng thành công nhá");
                                 } else {
-                                    return view('/cart', ['listCart' => $req->session()->get("idbookforcart"), 'mess' => $data['Messager'][0]]);
+                                    $req->session()->put('Mess', $data['Messager'][0]);
                                 }
                             } else {
-                                return view('/cart', ['listCart' => $req->session()->get("idbookforcart"), 'mess' => $data['Messager'][0]]);
+                                $req->session()->put('Mess', $data['Messager'][0]);
                             }
                         }
                     }
@@ -196,12 +196,15 @@ class WebController extends Controller
             }
         }
 
-        if (session()->has('UserLogin')) {
+        return Redirect('cart');
+    }
 
+    function cart(Request $req)
+    {
+        if (session()->has('UserLogin')) {
             if (isset(session()->get('UserLogin')['id']) && session()->has("idbookforcart")) {
                 $id = session()->get('UserLogin')['id'];
                 $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
-
 
                 return view('cart', ['data' => $data, 'listCart' => $req->session()->get("idbookforcart")]);
             } else return view('cart', ['data', 'listCart' => []]);
@@ -234,9 +237,9 @@ class WebController extends Controller
                 $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
 
 
-                return view('cart', ['data' => $data, 'listCart' => $req->session()->get("idbookforcart")]);
-            } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
-        } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
+                return Redirect('cart');
+            } else return Redirect('cart');
+        } else return Redirect('cart');
     }
 
     function minusCountItem(Request $req)
@@ -266,9 +269,9 @@ class WebController extends Controller
                 $data = Http::get('https://bookingapiiiii.herokuapp.com/khachhangbyid/' . $id);
 
 
-                return view('cart', ['data' => $data, 'listCart' => $req->session()->get("idbookforcart")]);
-            } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
-        } else return view('cart', ['data', 'listCart' => $req->session()->get("idbookforcart")]);
+                return Redirect('cart');
+            } else return Redirect('cart');
+        } else return Redirect('cart');
     }
 
 
