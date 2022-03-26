@@ -283,11 +283,31 @@ class WebController extends Controller
 
             if (isset($req->session()->get('UserLogin')['id'])) {
                 $id = $req->session()->get('UserLogin')['id'];
+                $last = 3;
+                $pages = 1;
 
-                $data = json_decode(Http::get($url . 'DonHangbyidKH/' . $id));
-                //dd($data);
-                $detailhistory = json_decode(Http::get($url . 'CTDonHang/' . $id));
-                return view('historypay', ['listHistoryPay' => $data]);
+                if (isset($_GET["pages"])) {
+                    if (intval($_GET["pages"]) == 0) {
+                        $pages = 1;
+                    } else if ($_GET["pages"] <= 0) {
+                        $pages = 1;
+                    } else {
+                        $pages = intval($_GET["pages"]);
+                    }
+                }              
+                $data = json_decode(Http::get($url . "DonHangbyidKH/$id/$pages/$last"));
+                $listHistoryPay = $data->data;
+                //Nhận Tổng Đơn Hàng Từ Respone
+                $count = $data->count;
+                //Tính Tổng Số Page Sẽ Hiển Thị Bằng Celi      
+                $TotalPage = ceil($count / $last);
+                if ($pages > $TotalPage) {
+                    $pages = $TotalPage;
+                    $data = json_decode(Http::get($url . "DonHangbyidKH/$id/$pages/$last"));
+                    $listHistoryPay = $data->data;
+                }
+
+                return view('historypay', compact('listHistoryPay', 'pages', 'TotalPage'));
             } else {
                 return view('notlogin');
             }
