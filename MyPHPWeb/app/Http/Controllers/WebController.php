@@ -81,6 +81,7 @@ class WebController extends Controller
 
     function CreateCart(Request $req)
     {
+        $req->session()->remove('Mess');
         if (isset($_GET['id'])) {
             if (isset($_GET['token'])) {
                 //Token Là Ảnh Trên Firebase
