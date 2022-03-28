@@ -35,22 +35,24 @@
 </div>
 
 @if($listCTBill !=null)
-@foreach($listCTBill as $item)
-<div class="DialogDetailsPay__infoPay-Details">
-    <div class="DialogDetailsPay__Image">
-        <img id="Anh" src="{{$item['Anhbia']}}" alt="#">
+<?php foreach ($listCTBill as $item) { ?>
+    <div class="DialogDetailsPay__infoPay-Details">
+        <div class="DialogDetailsPay__Image">
+            <img id="Anh" src="<?php echo $item['Anhbia'] ?>" alt="#">
+        </div>
+        <div id="Tensach" class="DialogDetailsPay__BookName">
+            <?php echo $item['Tensach'] ?>
+        </div>
+        <div id="Soluong" class="DialogDetailsPay__Count">
+            <?php echo $item['Soluong'] ?>
+        </div>
+        <div id="Dongia" class="DialogDetailsPay__Price">
+            <?php
+            $money = ($item["Dongia"] * $item["Soluong"]);
+            echo  number_format($money, 3, ",", "."); ?> đ
+        </div>
     </div>
-    <div id="Tensach" class="DialogDetailsPay__BookName">
-        {{$item['Tensach']}}
-    </div>
-    <div id="Soluong" class="DialogDetailsPay__Count">
-        {{$item['Soluong']}}
-    </div>
-    <div id="Dongia" class="DialogDetailsPay__Price">
-        {{$item['Dongia']}}đ
-    </div>
-</div>
-@endforeach
+<?php } ?>
 @else
 <p>Lỗi</p>
 @endif
