@@ -15,7 +15,7 @@ class AdminController extends Controller
 
         if (isset($req->session()->get("UserLogin")["Role"])) {
             if ($req->session()->get("UserLogin")["Role"] == true) {
-                return view('admin_index');
+                return view('admin_index',['Admin' => $req->session()->get("UserLogin")["HoTen"]]);
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }

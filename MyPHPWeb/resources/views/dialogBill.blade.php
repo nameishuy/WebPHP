@@ -13,16 +13,16 @@
             <span style="font-weight: bold;">Mã Đơn Hàng: </span><span></span>{{$idBill}}
         </span>
         <span>
-            <span style="font-weight: bold;">Ngày Đặt: </span><span style="font-weight: bold;">{{$date}}</span>
+            <span style="font-weight: bold;">Ngày Đặt: </span><span>{{$date}}</span>
         </span>
         <span>
-            <span style="font-weight: bold;">Tổng Tiền: </span><span style="color: red; font-weight: 600;">{{$money}}</span>đ
+            <span style="font-weight: bold;">Tổng Tiền: </span><span style="color: red; font-weight: 600;">{{$money}}đ</span>
         </span>
         <span>
             @if($TT == 'true')
             <span style="font-weight: bold;">Tình Trạng: </span> <span style="color: green; font-weight: bold;">Đã Giao Hàng</span>
             @else
-            <span style="font-weight: bold;">Tình Trạng: </span> <span style="color: green; font-weight: bold;">Chưa Giao Hàng </span>
+            <span style="font-weight: bold;">Tình Trạng: </span> <span style="color: red; font-weight: bold;">Chưa Giao Hàng </span>
             @endif
         </span>
     </div>
@@ -47,7 +47,7 @@
         {{$item['Soluong']}}
     </div>
     <div id="Dongia" class="DialogDetailsPay__Price">
-        {{$item['Dongia']}}
+        {{$item['Dongia']}}đ
     </div>
 </div>
 @endforeach
