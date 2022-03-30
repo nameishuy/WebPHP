@@ -93,9 +93,9 @@
             <?php
                 }
             }
-            echo $paging->html();
             ?>
         </div>
+        <?php    echo $paging->html(); ?>
     </div>
 </div>
 @endsection
