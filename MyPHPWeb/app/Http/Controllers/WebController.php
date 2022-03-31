@@ -144,8 +144,13 @@ class WebController extends Controller
                                         true
                                     );
                                 }
+
                                 if (isset($response['MaDonHang'])) {
                                     $req->session()->put("idbookforcart", []);
+                                    if (isset($req->session()->get('UserLogin')['Email'])) {
+                                        $mail = $req->session()->get('UserLogin')['Email'];
+                                        Http::get('https://bookingapiiiii.herokuapp.com/Sendmail/' . $mail);
+                                    }
                                     $req->session()->put('Mess', "Đặt hàng thành công nhá");
                                 } else {
                                     $req->session()->put('Mess', $data['Messager'][0]);
