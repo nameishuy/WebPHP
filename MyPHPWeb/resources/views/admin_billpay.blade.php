@@ -62,7 +62,7 @@
                         Đã Giao Hàng
                     </div>
                     <?php }else{ ?>
-                    <select id="Setting__Status" onchange=" changeStatusBill('<?php echo $bill['id']; ?>')">
+                    <select id="Setting__Status" onchange="changeStatusBill('<?php echo $bill['id']; ?>')">
                         <option selected hidden value="false">Chưa Giao</option>
                         <option value="true">Đã Giao</option>
                     </select>
