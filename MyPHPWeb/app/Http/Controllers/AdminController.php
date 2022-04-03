@@ -95,7 +95,7 @@ class AdminController extends Controller
             } else return view('admin_notAdmin');
         } else return view('admin_notAdmin');
     }
-    function Change(Request $req, $id)
+    function ChangeStatusBill(Request $req, $id)
     {
         $url = "https://bookingapiiiii.herokuapp.com/DonHang";
         Http::put($url, [
