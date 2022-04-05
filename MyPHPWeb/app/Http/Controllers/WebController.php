@@ -71,7 +71,10 @@ class WebController extends Controller
                 foreach ($arr as $item) {
 
                     if ($item['id'] == $itemCart['id']) {
-                        $item['count'] += 1;
+
+                        $item['count'] = $item['count'] + 1;
+                        $index = array_search($item,$arr);
+                        $arr[$index] = $item;
                         $req->session()->put("idbookforcart", $arr);
                         break;
                     }
