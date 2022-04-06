@@ -66,7 +66,7 @@
     <div class="SameCategoryBooksTitle">Sách liên quan</div>
 	<div class="samecategorySlide">
 		@foreach ($BookLienQuan as $item)
-            <a style="width: fit-content; text-decoration: none; color: black;" href="details?id=${data.get_id()}">            
+            <a style="width: fit-content; text-decoration: none; color: black;" href="details?id={{$item['_id']}}">            
                 <div class="SameCategoryBook">
                     <div class="SameCategoryBook__Img">
                         <img src="{{$item['Anhbia']}}" alt="">
